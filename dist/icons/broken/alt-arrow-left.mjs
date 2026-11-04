@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`alt-arrow-left-broken`},{default:()=>[t(`path`,{d:`M15 19L9 12L10.5 10.25M15 5L13 7.33333`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`})]});export{n as AltArrowLeftIcon};

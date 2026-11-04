@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`check-linear`},{default:()=>[t(`path`,{d:`M5 13L9 17L19 7`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`})]});export{n as CheckIcon};

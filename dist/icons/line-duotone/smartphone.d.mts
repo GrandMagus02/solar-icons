@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik00IDEwQzQgNi4yMjg3NiA0IDQuMzQzMTUgNS4xNzE1NyAzLjE3MTU3QzYuMzQzMTUgMiA4LjIyODc2IDIgMTIgMkMxNS43NzEyIDIgMTcuNjU2OSAyIDE4LjgyODQgMy4xNzE1N0MyMCA0LjM0MzE1IDIwIDYuMjI4NzYgMjAgMTBWMTRDMjAgMTcuNzcxMiAyMCAxOS42NTY5IDE4LjgyODQgMjAuODI4NEMxNy42NTY5IDIyIDE1Ljc3MTIgMjIgMTIgMjJDOC4yMjg3NiAyMiA2LjM0MzE1IDIyIDUuMTcxNTcgMjAuODI4NEM0IDE5LjY1NjkgNCAxNy43NzEyIDQgMTRWMTBaIiBzdHJva2U9IiMxQzI3NEMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggb3BhY2l0eT0iMC41IiBkPSJNMTUgMTlIOSIgc3Ryb2tlPSIjMUMyNzRDIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=)
+ */
+export declare const SmartphoneIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

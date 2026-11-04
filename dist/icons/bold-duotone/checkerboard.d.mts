@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0yMC41MzU1IDIwLjUzNkMyMiAxOS4wNzEgMjIgMTYuNzE0IDIyIDEyTDEyIDEyTDEyIDIyQzE2LjcxNCAyMiAxOS4wNzExIDIyIDIwLjUzNTUgMjAuNTM2WiIgZmlsbD0iIzFDMjc0QyIvPgo8cGF0aCBkPSJNMy40NjQ1IDMuNDY0QzIgNC45MjkgMiA3LjI4NiAyIDEyTDEyIDEyTDEyIDJDNy4yODYgMiA0LjkyODkgMiAzLjQ2NDUgMy40NjRaIiBmaWxsPSIjMUMyNzRDIi8+CjxnIG9wYWNpdHk9IjAuNSI+CjxwYXRoIGQ9Ik0yIDEyQzIgMTYuNzE0IDIgMTkuMDcxIDMuNDY0NSAyMC41MzZDNC45Mjg5IDIyIDcuMjg2IDIyIDEyIDIyTDEyIDEyTDIgMTJaIiBmaWxsPSIjMUMyNzRDIi8+CjxwYXRoIGQ9Ik0yMC41MzU1IDMuNDY0QzE5LjA3MTEgMiAxNi43MTQgMiAxMiAyTDEyIDEyTDIyIDEyQzIyIDcuMjg2IDIyIDQuOTI5IDIwLjUzNTUgMy40NjRaIiBmaWxsPSIjMUMyNzRDIi8+CjwvZz4KPC9zdmc+Cg==)
+ */
+export declare const CheckerboardIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

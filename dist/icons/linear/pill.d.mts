@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0zLjk5MDU3IDEzLjYwMTlDMS4zMzY0OCAxMC45NDc4IDEuMzM2NDggNi42NDQ2NiAzLjk5MDU3IDMuOTkwNTdDNi42NDQ2NiAxLjMzNjQ4IDEwLjk0NzggMS4zMzY0OCAxMy42MDE5IDMuOTkwNTdMMjAuMDA5NCAxMC4zOTgxQzIyLjY2MzUgMTMuMDUyMiAyMi42NjM1IDE3LjM1NTMgMjAuMDA5NCAyMC4wMDk0QzE3LjM1NTMgMjIuNjYzNSAxMy4wNTIyIDIyLjY2MzUgMTAuMzk4MSAyMC4wMDk0TDMuOTkwNTcgMTMuNjAxOVoiIHN0cm9rZT0iIzFDMjc0QyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMTYuODA1NyA3LjE5NDM0QzE2LjgwNTcgNy4xOTQzNCAxNi4yNjQ5IDkuOTk5OTkgMTMuMTMyMiAxMy4xMzI3QzkuOTk5NTIgMTYuMjY1MyA3LjE5NDM0IDE2LjgwNTcgNy4xOTQzNCAxNi44MDU3IiBzdHJva2U9IiMxQzI3NEMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==)
+ */
+export declare const PillIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

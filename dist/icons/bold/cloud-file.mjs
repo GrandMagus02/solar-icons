@@ -1,0 +1,1 @@
+import{FileCloudIcon as e}from"./file-cloud.mjs";const t=e;export{t as CloudFileIcon};

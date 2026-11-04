@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`forward-2-broken`},{default:()=>[t(`path`,{d:`M14.5 7L19.5 12L14.5 17M19.5 12L13 12M9.5 12C7.83333 12 4.5 11 4.5 7`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`})]});export{n as Forward2Icon};

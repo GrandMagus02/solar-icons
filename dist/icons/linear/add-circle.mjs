@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`add-circle-linear`},{default:()=>[t(`circle`,{cx:`12`,cy:`12`,r:`10`,stroke:`currentColor`,"stroke-linecap":`round`}),t(`path`,{d:`M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15`,stroke:`currentColor`,"stroke-linecap":`round`})]});export{n as AddCircleIcon};

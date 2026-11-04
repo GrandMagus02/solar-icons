@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0xOC41MzAzIDYuNTMwMzNDMTguODIzMiA2LjIzNzQ0IDE4LjgyMzIgNS43NjI1NiAxOC41MzAzIDUuNDY5NjdDMTguMjM3NCA1LjE3Njc4IDE3Ljc2MjYgNS4xNzY3OCAxNy40Njk3IDUuNDY5NjdMMTAuNSAxMi40MzkzTDYuNTMwMzMgOC40Njk2N0M2LjMxNTgzIDguMjU1MTcgNS45OTMyNCA4LjE5MSA1LjcxMjk5IDguMzA3MDlDNS40MzI3MyA4LjQyMzE4IDUuMjUgOC42OTY2NSA1LjI1IDlWMThDNS4yNSAxOC40MTQyIDUuNTg1NzkgMTguNzUgNiAxOC43NUwxNSAxOC43NUMxNS4zMDMzIDE4Ljc1IDE1LjU3NjggMTguNTY3MyAxNS42OTI5IDE4LjI4N0MxNS44MDkgMTguMDA2OCAxNS43NDQ4IDE3LjY4NDIgMTUuNTMwMyAxNy40Njk3TDExLjU2MDcgMTMuNUwxOC41MzAzIDYuNTMwMzNaIiBmaWxsPSIjMUMyNzRDIi8+Cjwvc3ZnPgo=)
+ */
+export declare const ArrowLeftDownIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

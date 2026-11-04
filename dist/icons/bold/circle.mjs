@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`circle-bold`},{default:()=>[t(`path`,{d:`M22 12C22 17.523 17.5228 22 12 22C6.4772 22 2 17.523 2 12C2 6.477 6.4772 2 12 2C17.5228 2 22 6.477 22 12Z`,"fill-rule":`evenodd`,"clip-rule":`evenodd`,fill:`currentColor`})]});export{n as CircleIcon};

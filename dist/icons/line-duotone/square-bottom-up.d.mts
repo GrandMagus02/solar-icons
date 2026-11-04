@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIG9wYWNpdHk9IjAuNSIgZD0iTTEyLjk5OTkgMjEuOTk5NEMxNy4wNTUgMjEuOTkyMSAxOS4xNzg0IDIxLjg5MjYgMjAuNTM1NCAyMC41MzU1QzIxLjk5OTkgMTkuMDcxMSAyMS45OTk5IDE2LjcxNCAyMS45OTk5IDEyQzIxLjk5OTkgNy4yODU5NSAyMS45OTk5IDQuOTI4OTMgMjAuNTM1NCAzLjQ2NDQ3QzE5LjA3MSAyIDE2LjcxNCAyIDExLjk5OTkgMkM3LjI4NTg3IDIgNC45Mjg4NCAyIDMuNDY0MzggMy40NjQ0N0MyLjEwNzM0IDQuODIxNSAyLjAwNzc5IDYuOTQ0OTMgMi4wMDA0OSAxMSIgc3Ryb2tlPSIjMUMyNzRDIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0zIDIxTDExIDEzTTExIDE5VjEzSDUiIHN0cm9rZT0iIzFDMjc0QyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K)
+ */
+export declare const SquareBottomUpIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

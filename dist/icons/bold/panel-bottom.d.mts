@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTkuODI4NCAzLjE3MTU3QzE4LjY1NjkgMiAxNi43NzEyIDIgMTMgMkwxMSAyQzcuMjI4NzYgMiA1LjM0MzE1IDIgNC4xNzE1NyAzLjE3MTU3QzMgNC4zNDMxNSAzIDYuMjI4NzYgMyAxMEwzIDE0QzMgMTQuMDg0MyAyLjk5OTk5IDE0LjE2NzYgMyAxNC4yNUwyMSAxNC4yNUMyMSAxNC4xNjc2IDIxIDE0LjA4NDMgMjEgMTRMMjEgMTBDMjEgNi4yMjg3NiAyMSA0LjM0MzE1IDE5LjgyODQgMy4xNzE1N1pNMjAuOTk0NCAxNS43NUwzLjAwNTU5IDE1Ljc1QzMuMDMzMjEgMTguMzg1OSAzLjE5NzI0IDE5Ljg1NDEgNC4xNzE1NyAyMC44Mjg0QzUuMzQzMTUgMjIgNy4yMjg3NiAyMiAxMSAyMkwxMyAyMkMxNi43NzEyIDIyIDE4LjY1NjkgMjIgMTkuODI4NCAyMC44Mjg0QzIwLjgwMjggMTkuODU0MSAyMC45NjY4IDE4LjM4NTkgMjAuOTk0NCAxNS43NVoiIGZpbGw9IiMxQzI3NEMiLz4KPC9zdmc+Cg==)
+ */
+export declare const PanelBottomIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

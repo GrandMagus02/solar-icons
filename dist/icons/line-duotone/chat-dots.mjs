@@ -1,0 +1,1 @@
+import{ChatSquareDotsIcon as e}from"./chat-square-dots.mjs";const t=e;export{t as ChatDotsIcon};

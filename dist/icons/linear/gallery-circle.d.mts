@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxjaXJjbGUgY3g9IjE1IiBjeT0iOSIgcj0iMiIgc3Ryb2tlPSIjMUMyNzRDIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0yMC4wMDAxIDE3LjYwMDFMMTcuNzc2NiAxNS41OTlDMTYuNzM3MSAxNC42NjM0IDE1LjE4OSAxNC41NzAyIDE0LjA0NDcgMTUuMzc0NEwxMy43NDY1IDE1LjU4MzlDMTIuOTUxNCAxNi4xNDI4IDExLjg2OTYgMTYuMDQ5MSAxMS4xODIzIDE1LjM2MThMNi44OTI2MiAxMS4wNzIxQzYuMDM2NDEgMTAuMjE1OSA0LjY2Mjk5IDEwLjE3MDIgMy43NTE3MiAxMC45Njc1TDIuMjgxMjUgMTIuMjU0MiIgc3Ryb2tlPSIjMUMyNzRDIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIiBzdHJva2U9IiMxQzI3NEMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==)
+ */
+export declare const GalleryCircleIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

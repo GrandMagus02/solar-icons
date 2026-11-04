@@ -1,0 +1,1 @@
+import{PanelRightOpenIcon as e}from"./panel-right-open.mjs";const t=e;export{t as SidebarOpenIcon};

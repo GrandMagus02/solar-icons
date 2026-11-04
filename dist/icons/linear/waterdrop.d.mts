@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0zIDEzLjE5MjhDMyAxOC4wNTY5IDYuODU1NDkgMjIgMTEuNjExNSAyMkgxMi4zODg1QzE3LjE0NDUgMjIgMjEgMTguMDU2OSAyMSAxMy4xOTI4VjEyLjkyODFDMjEgOC4zMTY1MSAxOC4yNzE1IDQuMTYzNDcgMTQuMDk2NyAyLjQyMDc3QzEyLjc1MjcgMS44NTk3NCAxMS4yNDczIDEuODU5NzQgOS45MDMyOSAyLjQyMDc3QzUuNzI4NTQgNC4xNjM0NyAzIDguMzE2NTEgMyAxMi45MjgxVjEzLjE5MjhaIiBzdHJva2U9IiMxQzI3NEMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTcuNjE0NzUgMTAuNzIzN0M4LjI0OTUgOC43MTgyNiA5LjYzMDYyIDcuMDg4MDUgMTEuMzg1OCA2LjI3NjM3IiBzdHJva2U9IiMxQzI3NEMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==)
+ */
+export declare const WaterdropIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

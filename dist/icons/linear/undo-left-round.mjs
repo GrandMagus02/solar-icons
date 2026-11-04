@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`undo-left-round-linear`},{default:()=>[t(`path`,{d:`M4 7H15C17.7614 7 20 9.23857 20 12C20 14.7614 17.7614 17 15 17H8.00001M7 10L4 7L7 4`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`})]});export{n as UndoLeftRoundIcon};

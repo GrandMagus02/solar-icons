@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0xOSA4Ljk3NDE0VjE0Ljk4NjFDMTkgMTguODU5OCAxNS44NjYgMjIgMTIgMjJDOC4xMzQwMSAyMiA1IDE4Ljg1OTggNSAxNC45ODYxVjguOTc0MTRDNSA1LjM1NDMzIDcuNzM2NjggMi4zNzQ5NyAxMS4yNSAyVjUuMzg1NDJDMTAuNjU4OCA1LjY2Njg1IDEwLjI1IDYuMjcwNjcgMTAuMjUgNi45NzAxNlY4Ljk3NDE0QzEwLjI1IDkuOTQyNTYgMTEuMDMzNSAxMC43Mjc2IDEyIDEwLjcyNzZDMTIuOTY2NSAxMC43Mjc2IDEzLjc1IDkuOTQyNTYgMTMuNzUgOC45NzQxNFY2Ljk3MDE2QzEzLjc1IDYuMjcwNjcgMTMuMzQxMiA1LjY2Njg1IDEyLjc1IDUuMzg1NDJWMkMxNi4yNjMzIDIuMzc0OTcgMTkgNS4zNTQzMyAxOSA4Ljk3NDE0WiIgZmlsbD0iIzFDMjc0QyIvPgo8L3N2Zz4K)
+ */
+export declare const MouseIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

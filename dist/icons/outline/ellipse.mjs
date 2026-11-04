@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`ellipse-outline`},{default:()=>[t(`ellipse`,{cx:`12`,cy:`12`,rx:`10`,ry:`7`,stroke:`currentColor`})]});export{n as EllipseIcon};

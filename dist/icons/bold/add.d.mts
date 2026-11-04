@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0xMi4wMjA1IDMuMjVDMTIuNDM0NyAzLjI1MDA1IDEyLjc3MDUgMy41ODU4MiAxMi43NzA1IDRWMTEuMjVIMjBDMjAuNDE0MiAxMS4yNSAyMC43NSAxMS41ODU4IDIwLjc1IDEyQzIwLjc1IDEyLjQxNDIgMjAuNDE0MiAxMi43NSAyMCAxMi43NUgxMi43NzA1VjIwQzEyLjc3MDUgMjAuNDE0MiAxMi40MzQ3IDIwLjc1IDEyLjAyMDUgMjAuNzVDMTEuNjA2MyAyMC43NSAxMS4yNzA1IDIwLjQxNDIgMTEuMjcwNSAyMFYxMi43NUg0QzMuNTg1NzkgMTIuNzUgMy4yNSAxMi40MTQyIDMuMjUgMTJDMy4yNSAxMS41ODU4IDMuNTg1NzkgMTEuMjUgNCAxMS4yNUgxMS4yNzA1VjRDMTEuMjcwNSAzLjU4NTc5IDExLjYwNjMgMy4yNSAxMi4wMjA1IDMuMjVaIiBmaWxsPSIjMUMyNzRDIi8+Cjwvc3ZnPgo=)
+ */
+export declare const AddIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

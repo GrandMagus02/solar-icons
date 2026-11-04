@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`arrow-up-linear`},{default:()=>[t(`path`,{d:`M12 20L12 4M6 10L12 4L18 10`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`})]});export{n as ArrowUpIcon};

@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxjaXJjbGUgb3BhY2l0eT0iMC41IiBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiIHN0cm9rZT0iIzFDMjc0QyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNOCAxMkM4IDEwLjExNDQgOCA5LjE3MTU3IDguNTg1NzkgOC41ODU3OUM5LjE3MTU3IDggMTAuMTE0NCA4IDEyIDhDMTMuODg1NiA4IDE0LjgyODQgOCAxNS40MTQyIDguNTg1NzlDMTYgOS4xNzE1NyAxNiAxMC4xMTQ0IDE2IDEyQzE2IDEzLjg4NTYgMTYgMTQuODI4NCAxNS40MTQyIDE1LjQxNDJDMTQuODI4NCAxNiAxMy44ODU2IDE2IDEyIDE2QzEwLjExNDQgMTYgOS4xNzE1NyAxNiA4LjU4NTc5IDE1LjQxNDJDOCAxNC44Mjg0IDggMTMuODg1NiA4IDEyWiIgc3Ryb2tlPSIjMUMyNzRDIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=)
+ */
+export declare const StopCircleIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

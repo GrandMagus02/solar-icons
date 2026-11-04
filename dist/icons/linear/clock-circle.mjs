@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`clock-circle-linear`},{default:()=>[t(`circle`,{cx:`12`,cy:`12`,r:`10`,stroke:`currentColor`,"stroke-linecap":`round`}),t(`path`,{d:`M12 8V12L14.5 14.5`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`})]});export{n as ClockCircleIcon};

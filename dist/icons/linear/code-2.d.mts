@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0xNiAxMUwxNy42OTY1IDEyLjUyNjhDMTkuMjM5IDEzLjkxNTEgMjAuMDEwMyAxNC42MDkzIDIwLjAxMDMgMTUuNUMyMC4wMTAzIDE2LjM5MDcgMTkuMjM5IDE3LjA4NDkgMTcuNjk2NSAxOC40NzMyTDE2IDIwIiBzdHJva2U9IiMxQzI3NEMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTEzLjk4NjggNUwxMS45OTM0IDEyLjVMMTAgMjAiIHN0cm9rZT0iIzFDMjc0QyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNOC4wMDAwNSA0LjgyOTU5TDYuMzAzNTggNi4zNTY0MUM0Ljc2MTAyIDcuNzQ0NzEgMy45ODk3NSA4LjQzODg2IDMuOTg5NzUgOS4zMjk1OUMzLjk4OTc1IDEwLjIyMDMgNC43NjEwMiAxMC45MTQ1IDYuMzAzNTggMTIuMzAyOEw4LjAwMDA1IDEzLjgyOTYiIHN0cm9rZT0iIzFDMjc0QyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K)
+ */
+export declare const Code2Icon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

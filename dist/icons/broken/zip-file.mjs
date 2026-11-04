@@ -1,0 +1,1 @@
+import{FileZipIcon as e}from"./file-zip.mjs";const t=e;export{t as ZipFileIcon};

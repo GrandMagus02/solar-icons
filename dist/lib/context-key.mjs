@@ -1,0 +1,1 @@
+const e=Symbol(`solar`);export{e as SOLAR_CONTEXT_KEY};

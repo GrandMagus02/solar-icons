@@ -1,0 +1,1 @@
+var e={Bold:`bold`,BoldDuotone:`bold-duotone`,Broken:`broken`,Linear:`linear`,LineDuotone:`line-duotone`,Outline:`outline`};export{e as WEIGHT_MAP};

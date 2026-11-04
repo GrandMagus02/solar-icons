@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik04IDIySDlDMTEuODI4NCAyMiAxMy4yNDI2IDIyIDE0LjEyMTMgMjEuMTIxQzE1IDIwLjI0MyAxNSAxOC44MjggMTUgMTZDMTUgMTUuNDQ4IDE1LjQ0NzcgMTUgMTYgMTVDMTguODI4NCAxNSAyMC4yNDI2IDE1IDIxLjEyMTMgMTQuMTIxQzIyIDEzLjI0MyAyMiAxMS44MjggMjIgOVY4QzIyIDUuMTcyIDIyIDMuNzU3IDIxLjEyMTMgMi44NzlDMjAuMjQyNiAyIDE4LjgyODQgMiAxNiAySDE1QzEyLjE3MTYgMiAxMC43NTc0IDIgOS44Nzg3IDIuODc5QzkgMy43NTcgOSA1LjE3MiA5IDhDOSA4LjU1MiA4LjU1MjMgOSA4IDlDNS4xNzE2IDkgMy43NTc0IDkgMi44Nzg3IDkuODc5QzIgMTAuNzU3IDIgMTIuMTcyIDIgMTVWMTZDMiAxOC44MjggMiAyMC4yNDMgMi44Nzg3IDIxLjEyMUMzLjc1NzQgMjIgNS4xNzE2IDIyIDggMjJaIiBmaWxsPSIjMUMyNzRDIi8+Cjwvc3ZnPgo=)
+ */
+export declare const UnionIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

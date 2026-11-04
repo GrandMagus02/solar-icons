@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0zIDlDMyA2LjE3MTU3IDMgNC43NTczNiAzLjg3ODY4IDMuODc4NjhDNC43NTczNiAzIDYuMTcxNTcgMyA5IDNIMTVDMTcuODI4NCAzIDE5LjI0MjYgMyAyMC4xMjEzIDMuODc4NjhDMjEgNC43NTczNiAyMSA2LjE3MTU3IDIxIDlWMTRDMjEgMTUuODg1NiAyMSAxNi44Mjg0IDIwLjQxNDIgMTcuNDE0MkMxOS44Mjg0IDE4IDE4Ljg4NTYgMTggMTcgMThIN0M1LjExNDM4IDE4IDQuMTcxNTcgMTggMy41ODU3OSAxNy40MTQyQzMgMTYuODI4NCAzIDE1Ljg4NTYgMyAxNFY5WiIgc3Ryb2tlPSIjMUMyNzRDIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0yMiAyMUgyIiBzdHJva2U9IiMxQzI3NEMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTE1IDE1SDkiIHN0cm9rZT0iIzFDMjc0QyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K)
+ */
+export declare const LaptopMinimalisticIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

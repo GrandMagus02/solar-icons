@@ -1,0 +1,1 @@
+import{PanelRightCloseIcon as e}from"./panel-right-close.mjs";const t=e;export{t as SidebarCloseIcon};

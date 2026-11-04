@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0xNSAyLjAyMDAyQzE3Ljc5MTMgMi4wODM4NCAxOS40MjE2IDIuMzUwNDcgMjAuNTM1NSAzLjQ2NDRDMjIgNC45Mjg4NyAyMiA3LjI4NTg5IDIyIDExLjk5OTlDMjIgMTYuNzE0IDIyIDE5LjA3MSAyMC41MzU1IDIwLjUzNTVDMTkuNDIxNiAyMS42NDk0IDE3Ljc5MTMgMjEuOTE2IDE1IDIxLjk3OTkiIHN0cm9rZT0iIzFDMjc0QyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBvcGFjaXR5PSIwLjUiIGQ9Ik05IDIuMDIwMDJDNi4yMDg3NSAyLjA4Mzg0IDQuNTc4NCAyLjM1MDQ3IDMuNDY0NDcgMy40NjQ0QzIgNC45Mjg4NyAyIDcuMjg1ODkgMiAxMS45OTk5QzIgMTYuNzE0IDIgMTkuMDcxIDMuNDY0NDcgMjAuNTM1NUM0LjU3ODQgMjEuNjQ5NCA2LjIwODc1IDIxLjkxNiA5IDIxLjk3OTkiIHN0cm9rZT0iIzFDMjc0QyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K)
+ */
+export declare const BracketsIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

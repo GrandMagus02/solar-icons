@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxjaXJjbGUgb3BhY2l0eT0iMC41IiBjeD0iNyIgY3k9IjciIHI9IjUiIGZpbGw9IiMxQzI3NEMiLz4KPHBhdGggZD0iTTE2LjI4NTcgMjBDMTkuNDQxNiAyMCAyMiAxNy40NzE3IDIyIDE0LjM1MjlDMjIgMTEuODgxMSAyMC4zOTMgOS43ODAyNCAxOC4xNTUxIDkuMDE0OThDMTcuODM3MSA2LjE5MzcxIDE1LjQxNTkgNCAxMi40NzYyIDRDOS4zMjAyOCA0IDYuNzYxOSA2LjUyODI3IDYuNzYxOSA5LjY0NzA2QzYuNzYxOSAxMC4zMzY5IDYuODg3MDYgMTAuOTk3OCA3LjExNjE2IDExLjYwODlDNi44NDc1IDExLjU1NjcgNi41Njk4MyAxMS41Mjk0IDYuMjg1NzEgMTEuNTI5NEMzLjkxODc4IDExLjUyOTQgMiAxMy40MjU2IDIgMTUuNzY0N0MyIDE4LjEwMzggMy45MTg3OCAyMCA2LjI4NTcxIDIwSDE2LjI4NTdaIiBmaWxsPSIjMUMyNzRDIi8+Cjwvc3ZnPgo=)
+ */
+export declare const CloudSunIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

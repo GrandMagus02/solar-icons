@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`unread-linear`},{default:()=>[t(`path`,{d:`M7 12.9L10.1429 16.5L18 7.5`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`})]});export{n as UnreadIcon};

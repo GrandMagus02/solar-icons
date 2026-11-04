@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik05IDE5SDE1QzE3LjgwODkgMTkgMTkuMjEzNCAxOSAyMC4yMjIzIDE4LjMyNkMyMC42NTkgMTguMDM0IDIxLjAzNCAxNy42NTkgMjEuMzI1OSAxNy4yMjJDMjIgMTYuMjEzIDIyIDE0LjgwOSAyMiAxMkMyMiA5LjE5MSAyMiA3Ljc4NyAyMS4zMjU5IDYuNzc4QzIxLjAzNCA2LjM0MSAyMC42NTkgNS45NjYgMjAuMjIyMyA1LjY3NEMxOS4yMTM0IDUgMTcuODA4OSA1IDE1IDVIOUM2LjE5MTEgNSA0Ljc4NjYgNSAzLjc3NzcgNS42NzRDMy4zNDEgNS45NjYgMi45NjYgNi4zNDEgMi42NzQxIDYuNzc4QzIgNy43ODcgMiA5LjE5MSAyIDEyQzIgMTQuODA5IDIgMTYuMjEzIDIuNjc0MSAxNy4yMjJDMi45NjYgMTcuNjU5IDMuMzQxIDE4LjAzNCAzLjc3NzcgMTguMzI2QzQuNzg2NiAxOSA2LjE5MTEgMTkgOSAxOVoiIGZpbGw9IiMxQzI3NEMiLz4KPC9zdmc+Cg==)
+ */
+export declare const RectangleIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

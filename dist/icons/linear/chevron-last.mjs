@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`chevron-last-linear`},{default:()=>[t(`path`,{d:`M7.5 5L13.5 12L7.5 19`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`}),t(`path`,{d:`M16.5 19L16.5 4.9996`,stroke:`currentColor`,"stroke-linecap":`round`})]});export{n as ChevronLastIcon};

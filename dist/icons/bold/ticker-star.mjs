@@ -1,0 +1,1 @@
+import{TicketStarIcon as e}from"./ticket-star.mjs";const t=e;export{t as TickerStarIcon};

@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`arrow-right-up-broken`},{default:()=>[t(`path`,{d:`M6 18L8.5 15.5M18 15V6H9M18 6L11.5 12.5`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`})]});export{n as ArrowRightUpIcon};

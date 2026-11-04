@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`arrow-right-down-linear`},{default:()=>[t(`path`,{d:`M6 6L18 18M9 18L18 18L18 9`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`})]});export{n as ArrowRightDownIcon};

@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik03Ljc4NzMgMTMuMTkyTDQuOTc4OCAxNC4zMTVDMi45OTI5IDE1LjEwOSAyIDE1LjUwNiAyIDE2QzIgMTYuNDk0IDIuOTkyOSAxNi44OTEgNC45Nzg4IDE3LjY4NUw3Ljc4NzMgMTguODA4QzkuNzczMiAxOS42MDMgMTAuNzY2MSAyMCAxMiAyMEMxMy4yMzM5IDIwIDE0LjIyNjggMTkuNjAzIDE2LjIxMjcgMTguODA4TDE5LjAyMTIgMTcuNjg1QzIxLjAwNzEgMTYuODkxIDIyIDE2LjQ5NCAyMiAxNkMyMiAxNS41MDYgMjEuMDA3MSAxNS4xMDkgMTkuMDIxMiAxNC4zMTVMMTYuMjEyNyAxMy4xOTIiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZT0iIzFDMjc0QyIvPgo8cGF0aCBkPSJNMTIgMTZMMTIgNE05IDdMMTIgNEwxNSA3IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2U9IiMxQzI3NEMiLz4KPC9zdmc+Cg==)
+ */
+export declare const BringLayerForwardIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

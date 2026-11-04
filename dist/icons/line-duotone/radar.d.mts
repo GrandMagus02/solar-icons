@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIG9wYWNpdHk9IjAuNSIgZD0iTTEyIDExLjk5OTZMNS4wMDE5NyA2LjMzNTQ2QzQuNTcyODUgNS45ODgxMyAzLjkzODY5IDYuMDUxODIgMy42MzU5OSA2LjUxMzVDMy4wNjY3OCA3LjM4MTYzIDIuNjI0MTMgOC4zNTM4OSAyLjM0MDc4IDkuNDExMzZDMC45MTEzNjQgMTQuNzQ2IDQuMDc3MTkgMjAuMjI5NCA5LjQxMTg1IDIxLjY1ODhDMTQuNzQ2NSAyMy4wODgyIDIwLjIyOTkgMTkuOTIyNCAyMS42NTkzIDE0LjU4NzdDMjMuMDg4NyA5LjI1MzA4IDE5LjkyMjkgMy43Njk3MSAxNC41ODgyIDIuMzQwMjlDMTEuOTU1NiAxLjYzNDg5IDkuMjg2ODQgMi4wNDg1NyA3LjA4NjkgMy4yODk3MiIgc3Ryb2tlPSIjMUMyNzRDIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0xMiAxMkw1LjAwMTk1IDYuMzM1OTQiIHN0cm9rZT0iIzFDMjc0QyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K)
+ */
+export declare const RadarIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

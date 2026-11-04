@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0xNSAxNUgxNkMxOC44Mjg0IDE1IDIwLjI0MjYgMTUgMjEuMTIxMyAxNC4xMjFDMjIgMTMuMjQzIDIyIDExLjgyOCAyMiA5VjhDMjIgNS4xNzIgMjIgMy43NTcgMjEuMTIxMyAyLjg3OUMyMC4yNDI2IDIgMTguODI4NCAyIDE2IDJIMTVDMTIuMTcxNiAyIDEwLjc1NzQgMiA5Ljg3ODcgMi44NzlDOSAzLjc1NyA5IDUuMTcyIDkgOFY5TTE1IDE1QzEyLjE3MTYgMTUgMTAuNzU3NCAxNSA5Ljg3ODcgMTQuMTIxQzkgMTMuMjQzIDkgMTEuODI4IDkgOU0xNSAxNVYxNkMxNSAxOC44MjggMTUgMjAuMjQzIDE0LjEyMTMgMjEuMTIxQzEzLjI0MjYgMjIgMTEuODI4NCAyMiA5IDIySDhDNS4xNzE2IDIyIDMuNzU3NCAyMiAyLjg3ODcgMjEuMTIxQzIgMjAuMjQzIDIgMTguODI4IDIgMTZWMTVDMiAxMi4xNzIgMiAxMC43NTcgMi44Nzg3IDkuODc5QzMuNzU3NCA5IDUuMTcxNiA5IDggOUg5IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlPSIjMUMyNzRDIi8+Cjwvc3ZnPgo=)
+ */
+export declare const SubtractMinimalisticIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

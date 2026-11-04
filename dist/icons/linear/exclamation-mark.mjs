@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`exclamation-mark-linear`},{default:()=>[t(`path`,{d:`M12 2V15.3333`,stroke:`currentColor`,"stroke-linecap":`round`}),t(`path`,{d:`M12 22H12.0001`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`})]});export{n as ExclamationMarkIcon};

@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0xMS41IDJDMTYuNzQ2NyAyIDIxIDYuMjUzMjkgMjEgMTEuNUMyMSAxMy44NTQxIDIwLjE0MTcgMTYuMDA2NCAxOC43MjM2IDE3LjY2NkMxOC43MzE1IDE3LjY3MzIgMTguNzQwNCAxNy42Nzk5IDE4Ljc0OCAxNy42ODc1TDIyLjUzMDMgMjEuNDY5N0MyMi44MjI4IDIxLjc2MjYgMjIuODIyOCAyMi4yMzg0IDIyLjUzMDMgMjIuNTMxMkMyMi4yMzc1IDIyLjgyMzYgMjEuNzYyNSAyMi44MjM3IDIxLjQ2OTcgMjIuNTMxMkwxNy42ODc1IDE4Ljc0OEMxNy42Nzk3IDE4Ljc0MDMgMTcuNjcyNCAxOC43MzE3IDE3LjY2NSAxOC43MjM2QzE2LjAwNTUgMjAuMTQxNCAxMy44NTM4IDIxIDExLjUgMjFDNi4yNTMyOSAyMSAyIDE2Ljc0NjcgMiAxMS41QzIgNi4yNTMyOSA2LjI1MzI5IDIgMTEuNSAyWiIgZmlsbD0iIzFDMjc0QyIvPgo8L3N2Zz4K)
+ */
+export declare const MagnifierIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

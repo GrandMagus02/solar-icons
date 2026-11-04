@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTYuNzYyOCAzLjI4ODU0QzE3LjA2OTEgMy4xODY0NSAxNy40MDYzIDMuMjkxNzkgMTcuNiAzLjU1MDA1TDIwLjYgNy41NTAwNUMyMC44NDg1IDcuODgxNDIgMjAuNzgxNCA4LjM1MTUyIDIwLjQ1IDguNjAwMDVDMjAuMTE4NiA4Ljg0ODU4IDE5LjY0ODUgOC43ODE0MiAxOS40IDguNDUwMDVMMTcuNzUgNi4yNTAwNVYyMEMxNy43NSAyMC40MTQzIDE3LjQxNDIgMjAuNzUgMTcgMjAuNzVDMTYuNTg1OCAyMC43NSAxNi4yNSAyMC40MTQzIDE2LjI1IDIwVjQuMDAwMDVDMTYuMjUgMy42NzcyMyAxNi40NTY2IDMuMzkwNjIgMTYuNzYyOCAzLjI4ODU0Wk0xMyA4Ljc1MDA1SDRWNy4yNTAwNUgxM1Y4Ljc1MDA1Wk0xMyAxMy43NUg2VjEyLjI1SDEzVjEzLjc1Wk0xMyAxOC43NUg4VjE3LjI1SDEzVjE4Ljc1WiIgZmlsbD0iIzFDMjc0QyIvPgo8L3N2Zz4K)
+ */
+export declare const SortFromBottomToTopIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

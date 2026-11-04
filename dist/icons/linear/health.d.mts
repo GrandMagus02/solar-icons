@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0yIDkuMzE3NUMyIDEzLjA0NjggNi4wMTk0MyAxNi45OTEgOC45NjE3MyAxOS4zNzg2QzEwLjI5MzcgMjAuNDU5NSAxMC45NTk3IDIxIDEyIDIxQzEzLjA0MDMgMjEgMTMuNzA2MyAyMC40NTk2IDE1LjAzODMgMTkuMzc4N0MxNy45ODA2IDE2Ljk5MSAyMiAxMy4wNDY4IDIyIDkuMzE3NDdDMjIgMy4wODc0OCAxNi40OTk4IDAuNzYxNDk4IDEyIDUuNTc0MTJDNy41MDAxNiAwLjc2MTQ5OCAyIDMuMDg3NDggMiA5LjMxNzVaIiBzdHJva2U9IiMxQzI3NEMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTE4LjUgOS4wMDAwMkgxNi41TTE2LjUgOS4wMDAwMkwxNC41IDkuMDAwMDJNMTYuNSA5LjAwMDAyTDE2LjUgN00xNi41IDkuMDAwMDJMMTYuNSAxMSIgc3Ryb2tlPSIjMUMyNzRDIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=)
+ */
+export declare const HealthIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

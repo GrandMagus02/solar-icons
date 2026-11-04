@@ -1,0 +1,1 @@
+import{ChartSquare2Icon as e}from"./chart-square-2.mjs";const t=e;export{t as ChatSquare2Icon};

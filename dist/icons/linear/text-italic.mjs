@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`text-italic-linear`},{default:()=>[t(`path`,{d:`M3 22H15M9 2H21M9 22L15 2`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`})]});export{n as TextItalicIcon};

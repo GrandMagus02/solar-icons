@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTUuNDg4MSA0LjQzMDU3QzE1LjgwMjYgNC43MDAxNCAxNS44MzkgNS4xNzM2MSAxNS41Njk0IDUuNDg4MTFMOS45ODc4MSAxMkwxNS41Njk0IDE4LjUxMTlDMTUuODM5IDE4LjgyNjQgMTUuODAyNiAxOS4yOTk5IDE1LjQ4ODEgMTkuNTY5NUMxNS4xNzM2IDE5LjgzOSAxNC43MDAxIDE5LjgwMjYgMTQuNDMwNiAxOS40ODgxTDguNDMwNTYgMTIuNDg4MUM4LjE4OTgxIDEyLjIwNzIgOC4xODk4MSAxMS43OTI4IDguNDMwNTYgMTEuNTExOUwxNC40MzA2IDQuNTExOTJDMTQuNzAwMSA0LjE5NzQzIDE1LjE3MzYgNC4xNjEgMTUuNDg4MSA0LjQzMDU3WiIgZmlsbD0iIzFDMjc0QyIvPgo8L3N2Zz4K)
+ */
+export declare const AltArrowLeftIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

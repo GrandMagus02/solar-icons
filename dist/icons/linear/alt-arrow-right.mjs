@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`alt-arrow-right-linear`},{default:()=>[t(`path`,{d:`M9 5L15 12L9 19`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`})]});export{n as AltArrowRightIcon};

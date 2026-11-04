@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`ellipse-bold`},{default:()=>[t(`ellipse`,{cx:`12`,cy:`12`,rx:`10`,ry:`7`,fill:`currentColor`})]});export{n as EllipseIcon};

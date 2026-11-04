@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`arrow-left-down-broken`},{default:()=>[t(`path`,{d:`M6 9V18H15M6 18L12.5 11.5M18 6L15.5 8.5`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`})]});export{n as ArrowLeftDownIcon};

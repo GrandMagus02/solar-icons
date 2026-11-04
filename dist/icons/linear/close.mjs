@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`close-linear`},{default:()=>[t(`path`,{d:`M19.0068 5L5.00684 19`,stroke:`currentColor`,"stroke-linecap":`round`}),t(`path`,{d:`M19 19L5 5`,stroke:`currentColor`,"stroke-linecap":`round`})]});export{n as CloseIcon};

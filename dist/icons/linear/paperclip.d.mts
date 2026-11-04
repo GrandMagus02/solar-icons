@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik03LjkxNzUgMTcuODA2OEwxNS44MDg0IDEwLjI1MzVDMTYuNzU1OCA5LjM0NjY4IDE2Ljc1NTggNy44NzYzNyAxNS44MDg0IDYuOTY5NTFDMTQuODYxIDYuMDYyNjUgMTMuMzI1IDYuMDYyNjUgMTIuMzc3NiA2Ljk2OTUxTDQuNTQzODcgMTQuNDY4MUMyLjc0MzgyIDE2LjE5MTEgMi43NDM4MiAxOC45ODQ3IDQuNTQzODcgMjAuNzA3N0M2LjM0MzkxIDIyLjQzMDggOS4yNjIzNyAyMi40MzA4IDExLjA2MjQgMjAuNzA3N0wxOS4wMTA1IDEzLjA5OTdDMjEuNjYzMiAxMC41NjA1IDIxLjY2MzIgNi40NDM2MiAxOS4wMTA1IDMuOTA0NDFDMTYuMzU3OCAxLjM2NTIgMTIuMDU2OSAxLjM2NTIgOS40MDQxOSAzLjkwNDQxTDMgMTAuMDM0NiIgc3Ryb2tlPSIjMUMyNzRDIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=)
+ */
+export declare const PaperclipIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

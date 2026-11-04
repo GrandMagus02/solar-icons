@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIG9wYWNpdHk9IjAuNSIgZD0iTTEwLjk5OTggOC43Njg0NEw0LjkwMzEyIDQuMzA4MzhDMy42MDA2NCAzLjQxMTIyIDIgNC41Nzg5NSAyIDYuNDI2MzJMMiAxNy41NzM3QzIgMTkuNDIxMSAzLjYwMDY1IDIwLjU4ODggNC45MDMxMyAxOS42OTE2TDEwLjk5OTggMTUuMjMxNiIgc3Ryb2tlPSIjMUMyNzRDIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0yMS4wNzg2IDEwLjE0NjhDMjIuMzA3MSAxMC45NTQ1IDIyLjMwNzEgMTMuMDQ1NSAyMS4wNzg2IDEzLjg1MzJMMTMuNjYxMiAxOC43MzAyQzEyLjQ2NzMgMTkuNTE1MiAxMSAxOC40OTM0IDExIDE2Ljg3N0wxMSA3LjEyMzAzQzExIDUuNTA2NTggMTIuNDY3MyA0LjQ4NDgyIDEzLjY2MTIgNS4yNjk4M0wyMS4wNzg2IDEwLjE0NjhaIiBzdHJva2U9IiMxQzI3NEMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==)
+ */
+export declare const RewindForwardIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

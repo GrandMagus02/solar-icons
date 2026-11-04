@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`user-rounded-linear`},{default:()=>[t(`circle`,{cx:`12`,cy:`6`,r:`4`,stroke:`currentColor`,"stroke-linecap":`round`}),t(`ellipse`,{cx:`12`,cy:`17`,rx:`7`,ry:`4`,stroke:`currentColor`,"stroke-linecap":`round`})]});export{n as UserRoundedIcon};

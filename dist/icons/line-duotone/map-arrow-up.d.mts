@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0xMiAxOC40NzMxQzExLjc1MDEgMTguNDczMSAxMS41MDAyIDE4LjUzNDQgMTEuMjcwNiAxOC42NTdMNS4zNjY4OSAyMS44MDlDMy45NzkxNCAyMi41NDk5IDIuNDk3ODkgMjAuOTk4NCAzLjE2NDk2IDE5LjUwMjVMMTAuNTI3NSAyLjk5MjgxQzEwLjgyMjYgMi4zMzA5NCAxMS40MTEzIDIgMTIgMiIgc3Ryb2tlPSIjMUMyNzRDIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIG9wYWNpdHk9IjAuNSIgZD0iTTEyIDE4LjQ3MzFDMTIuMjQ5OSAxOC40NzMxIDEyLjQ5OTggMTguNTM0NCAxMi43Mjk0IDE4LjY1N0wxOC42MzMxIDIxLjgwOUMyMC4wMjA5IDIyLjU0OTkgMjEuNTAyMSAyMC45OTg0IDIwLjgzNSAxOS41MDI1TDEzLjQ3MjUgMi45OTI4MUMxMy4xNzc0IDIuMzMwOTQgMTIuNTg4NyAyIDEyIDIiIHN0cm9rZT0iIzFDMjc0QyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K)
+ */
+export declare const MapArrowUpIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

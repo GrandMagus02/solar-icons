@@ -1,0 +1,1 @@
+import{FileFigmaIcon as e}from"./file-figma.mjs";const t=e;export{t as FigmaFileIcon};

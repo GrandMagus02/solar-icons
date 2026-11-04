@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`wi-fi-none-broken`},{default:()=>[t(`path`,{d:`M12.0176 19.4644H12.0177`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`})]});export{n as WiFiNoneIcon};

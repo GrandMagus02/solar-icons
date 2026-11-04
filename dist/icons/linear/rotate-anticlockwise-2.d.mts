@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0xOS43NSA0TDE2IDRMMTYgNy40MjlNMTYgNEMxOS4xMjUgNi44NTcgMjEgOSAyMSAxMkMyMSAxNSAxOS4yNDc2IDE4LjI4NiAxNiAyMCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSIjMUMyNzRDIi8+CjxwYXRoIGQ9Ik0xMC45Mjg5IDE0LjkyOUMxMi4zMDk2IDEzLjU0OCAxMyAxMi44NTggMTMgMTJDMTMgMTEuMTQyIDEyLjMwOTYgMTAuNDUyIDEwLjkyODkgOS4wNzFDOS41NDgyIDcuNjkgOC44NTc5IDcgOCA3QzcuMTQyMSA3IDYuNDUxOCA3LjY5IDUuMDcxMSA5LjA3MUMzLjY5MDQgMTAuNDUyIDMgMTEuMTQyIDMgMTJDMyAxMi44NTggMy42OTA0IDEzLjU0OCA1LjA3MTEgMTQuOTI5QzYuNDUxOCAxNi4zMSA3LjE0MjEgMTcgOCAxN0M4Ljg1NzkgMTcgOS41NDgyIDE2LjMxIDEwLjkyODkgMTQuOTI5WiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzFDMjc0QyIvPgo8L3N2Zz4K)
+ */
+export declare const RotateAnticlockwise2Icon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

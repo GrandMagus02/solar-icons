@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0xNy4wMDAyIDIwLjY2QzEyLjIxNzMgMjMuNDIxNCA2LjEwMTQgMjEuNzgyNiAzLjM0IDE2Ljk5OTdDMC41Nzg1IDEyLjIxNjggMi4yMTczIDYuMTAwOSA3LjAwMDIgMy4zMzk1QzguOTQ5OCAyLjIxMzkgMTEuMTIwOSAxLjgxOTQgMTMuMTk2IDIuMDcwOUMxNi4yMTE3IDIuNDM2NCAxOS4wMjQ2IDQuMTY2NCAyMC42NjA1IDYuOTk5N0MyMi4yOTYzIDkuODMzIDIyLjM4OCAxMy4xMzQxIDIxLjE5NjcgMTUuOTI4NkMyMC4zNzcgMTcuODUxNCAxOC45NDk4IDE5LjUzNDQgMTcuMDAwMiAyMC42NloiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2U9IiMxQzI3NEMiLz4KPHBhdGggb3BhY2l0eT0iMC41IiBkPSJNMTIgMTJDMTIgMTIgNiAxNiAxMiAyMk0xMiAxMkMxMiAxMiAxNyAxNyAyMiAxMk0xMiAxMkMxMiAxMiAxNyA3IDEyIDJNMTIgMTJDMTIgMTIgOCA2IDIgMTIiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2U9IiMxQzI3NEMiLz4KPC9zdmc+Cg==)
+ */
+export declare const DistortIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

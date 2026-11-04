@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`ellipse-broken`},{default:()=>[t(`path`,{d:`M8 5.5825C9.2249 5.2078 10.5778 5 12 5C17.5228 5 22 8.134 22 12C22 15.866 17.5228 19 12 19C6.4772 19 2 15.866 2 12C2 10.9264 2.3453 9.9093 2.9623 9`,"stroke-linecap":`round`,stroke:`currentColor`})]});export{n as EllipseIcon};

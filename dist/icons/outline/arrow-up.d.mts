@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTEuNDY5NyAzLjQ2OTY3QzExLjc2MjYgMy4xNzY3OCAxMi4yMzc0IDMuMTc2NzggMTIuNTMwMyAzLjQ2OTY3TDE4LjUzMDMgOS40Njk2N0MxOC44MjMyIDkuNzYyNTYgMTguODIzMiAxMC4yMzc0IDE4LjUzMDMgMTAuNTMwM0MxOC4yMzc0IDEwLjgyMzIgMTcuNzYyNiAxMC44MjMyIDE3LjQ2OTcgMTAuNTMwM0wxMi43NSA1LjgxMDY2TDEyLjc1IDIwQzEyLjc1IDIwLjQxNDIgMTIuNDE0MiAyMC43NSAxMiAyMC43NUMxMS41ODU4IDIwLjc1IDExLjI1IDIwLjQxNDIgMTEuMjUgMjBMMTEuMjUgNS44MTA2Nkw2LjUzMDMzIDEwLjUzMDNDNi4yMzc0NCAxMC44MjMyIDUuNzYyNTYgMTAuODIzMiA1LjQ2OTY3IDEwLjUzMDNDNS4xNzY3OCAxMC4yMzc0IDUuMTc2NzggOS43NjI1NiA1LjQ2OTY3IDkuNDY5NjdMMTEuNDY5NyAzLjQ2OTY3WiIgZmlsbD0iIzFDMjc0QyIvPgo8L3N2Zz4K)
+ */
+export declare const ArrowUpIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

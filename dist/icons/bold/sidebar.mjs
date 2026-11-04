@@ -1,0 +1,1 @@
+import{PanelTextRightIcon as e}from"./panel-text-right.mjs";const t=e;export{t as SidebarIcon};

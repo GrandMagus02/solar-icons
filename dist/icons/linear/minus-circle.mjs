@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`minus-circle-linear`},{default:()=>[t(`circle`,{cx:`12`,cy:`12`,r:`10`,stroke:`currentColor`,"stroke-linecap":`round`}),t(`path`,{d:`M15 12H9`,stroke:`currentColor`,"stroke-linecap":`round`})]});export{n as MinusCircleIcon};

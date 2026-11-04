@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0xMiA5LjAwMDA4TDE2LjQzMTcgNC41Njg0Mk0xMiAxNC41MDAxTDE4LjYxNDMgNy44ODU4Mk0xMiAxOS41MDAxTDE5LjgxMSAxMS42ODkxIiBzdHJva2U9IiMxQzI3NEMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTEyIDIyQzE2LjQxODMgMjIgMjAgMTguMzU0MSAyMCAxMy44NTY3QzIwIDkuMzk0NTMgMTcuNDQ2NyA0LjE4NzU5IDEzLjQ2MjkgMi4zMjU1NUMxMi45OTg2IDIuMTA4NTIgMTIuNDk5MyAyIDEyIDJNMTIgMjJDNy41ODE3MiAyMiA0IDE4LjM1NDEgNCAxMy44NTY3QzQgOS4zOTQ1MyA2LjU1MzMyIDQuMTg3NTkgMTAuNTM3MSAyLjMyNTU1QzExLjAwMTQgMi4xMDg1MiAxMS41MDA3IDIgMTIgMk0xMiAyMlYyIiBzdHJva2U9IiMxQzI3NEMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==)
+ */
+export declare const LeafIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

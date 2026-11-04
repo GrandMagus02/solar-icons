@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0zIDEzVjEyLjkyOEMzIDguMzE3IDUuNzI4NSA0LjE2MyA5LjkwMzMgMi40MjFDMTEuMjQ3MyAxLjg2IDEyLjc1MjcgMS44NiAxNC4wOTY3IDIuNDIxQzE4LjI3MTUgNC4xNjMgMjEgOC4zMTcgMjEgMTIuOTI4VjEzTTMgMTNWMTMuMTkzQzMgMTguMDU3IDYuODU1NSAyMiAxMS42MTE1IDIySDEyLjM4ODVDMTcuMTQ0NSAyMiAyMSAxOC4wNTcgMjEgMTMuMTkzVjEzTTMgMTNDMyAxMyA2LjUgMTUuNSAxMiAxNS41QzE3LjUgMTUuNSAyMSAxMyAyMSAxMyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzFDMjc0QyIvPgo8cGF0aCBkPSJNNy42MTQ3IDEwLjcyNEM4LjI0OTUgOC43MTggOS42MzA2IDcuMDg4IDExLjM4NTggNi4yNzYiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZT0iIzFDMjc0QyIvPgo8L3N2Zz4K)
+ */
+export declare const OpacityIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

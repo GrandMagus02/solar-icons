@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`list-broken`},{default:()=>[t(`path`,{d:`M20 7L4 7`,stroke:`currentColor`,"stroke-linecap":`round`}),t(`path`,{d:`M15 12L4 12`,stroke:`currentColor`,"stroke-linecap":`round`}),t(`path`,{d:`M9 17H4`,stroke:`currentColor`,"stroke-linecap":`round`})]});export{n as ListIcon};

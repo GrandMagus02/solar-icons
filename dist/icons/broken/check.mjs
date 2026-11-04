@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`check-broken`},{default:()=>[t(`path`,{d:`M14 12L9 17L5 13`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`}),t(`path`,{d:`M16.5 9.5L19 7`,stroke:`currentColor`,"stroke-linecap":`round`})]});export{n as CheckIcon};

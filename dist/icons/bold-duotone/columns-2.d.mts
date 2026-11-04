@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0xMS4yNSAzTDEyLjc1IDNMMTIuNzUgMjFMMTEuMjUgMjFMMTEuMjUgM1oiIGZpbGw9IiMxQzI3NEMiLz4KPHBhdGggb3BhY2l0eT0iMC41IiBkPSJNMiAxMUMyIDcuMjI4NzYgMiA1LjM0MzE1IDMuMTcxNTcgNC4xNzE1N0M0LjM0MzE1IDMgNi4yMjg3NiAzIDEwIDNIMTRDMTcuNzcxMiAzIDE5LjY1NjkgMyAyMC44Mjg0IDQuMTcxNTdDMjIgNS4zNDMxNSAyMiA3LjIyODc2IDIyIDExVjEzQzIyIDE2Ljc3MTIgMjIgMTguNjU2OSAyMC44Mjg0IDE5LjgyODRDMTkuNjU2OSAyMSAxNy43NzEyIDIxIDE0IDIxSDEwQzYuMjI4NzYgMjEgNC4zNDMxNSAyMSAzLjE3MTU3IDE5LjgyODRDMiAxOC42NTY5IDIgMTYuNzcxMiAyIDEzVjExWiIgZmlsbD0iIzFDMjc0QyIvPgo8L3N2Zz4K)
+ */
+export declare const Columns2Icon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

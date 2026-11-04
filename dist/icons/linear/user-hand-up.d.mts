@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik04IDEzSDE2TTggMTNWMThDOCAxOS44ODU2IDggMjAuODI4NCA4LjU4NTc5IDIxLjQxNDJDOS4xNzE1NyAyMiAxMC4xMTQ0IDIyIDEyIDIyQzEzLjg4NTYgMjIgMTQuODI4NCAyMiAxNS40MTQyIDIxLjQxNDJDMTYgMjAuODI4NCAxNiAxOS44ODU2IDE2IDE4VjEzTTggMTNDNS4yNDIxIDEyLjM4NzEgMy4wNjcxNyAxMC4yNjg3IDIuMzgxOTcgNy41Mjc4N0wyIDZNMTYgMTNDMTcuNzEwNyAxMyAxOS4xNTA2IDE0LjI4MDQgMTkuMzUwNSAxNS45Nzk1TDIwIDIxLjUiIHN0cm9rZT0iIzFDMjc0QyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8Y2lyY2xlIGN4PSIxMiIgY3k9IjYiIHI9IjQiIHN0cm9rZT0iIzFDMjc0QyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K)
+ */
+export declare const UserHandUpIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`men-linear`},{default:()=>[t(`circle`,{cx:`10`,cy:`14`,r:`8`,stroke:`currentColor`,"stroke-linecap":`round`}),t(`path`,{d:`M15.6357 8.33427L21.9998 2M16.9998 2H21.9998V7`,stroke:`currentColor`,"stroke-linecap":`round`,"stroke-linejoin":`round`})]});export{n as MenIcon};

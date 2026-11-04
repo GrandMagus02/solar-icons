@@ -1,0 +1,1 @@
+import e from"../../lib/IconBase.mjs";import{h as t}from"vue";const n=(n,{attrs:r})=>t(e,{...r,...n,iconName:`slash-circle-linear`},{default:()=>[t(`path`,{d:`M13.2939 7.17041L11.9998 12L10.7058 16.8297`,stroke:`currentColor`,"stroke-linecap":`round`}),t(`circle`,{cx:`12`,cy:`12`,r:`10`,stroke:`currentColor`,"stroke-linecap":`round`})]});export{n as SlashCircleIcon};

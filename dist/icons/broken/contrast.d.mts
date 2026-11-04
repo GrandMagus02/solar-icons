@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIGQ9Ik0xMiAyMkM2LjQ3NzIgMjIgMiAxNy41MjI4IDIgMTJDMiA2LjQ3NzIgNi40NzcyIDIgMTIgMk0xMiAyMkMxNy41MjI4IDIyIDIyIDE3LjUyMjggMjIgMTJDMjIgMTAuMTc4NiAyMS41MTMgOC40NzA5IDIwLjY2MjIgN00xMiAyMlYyTTEyIDJDMTMuODIxNCAyIDE1LjUyOTEgMi40ODcgMTcgMy4zMzc4IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2U9IiMxQzI3NEMiLz4KPHBhdGggZD0iTTEyLjAwMDEgMkwyLjAwMDEgMTJNMTIuMDAwMSAxN0w3Ljg4ODQgMjEuMTExN00xMi4wMDAxIDEyTDQuOTM1NCAxOS4wNjQ2TTEyLjAwMDEgN0wyLjg4ODQgMTYuMTExNyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzFDMjc0QyIvPgo8L3N2Zz4K)
+ */
+export declare const ContrastIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

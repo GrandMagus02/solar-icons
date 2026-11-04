@@ -1,0 +1,1 @@
+import{FileCodeIcon as e}from"./file-code.mjs";const t=e;export{t as CodeFileIcon};

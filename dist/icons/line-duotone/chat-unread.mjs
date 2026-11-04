@@ -1,0 +1,1 @@
+import{ChatSquareUnreadIcon as e}from"./chat-square-unread.mjs";const t=e;export{t as ChatUnreadIcon};

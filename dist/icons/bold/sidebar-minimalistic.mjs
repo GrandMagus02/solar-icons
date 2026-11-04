@@ -1,0 +1,1 @@
+import{PanelRightIcon as e}from"./panel-right.mjs";const t=e;export{t as SidebarMinimalisticIcon};

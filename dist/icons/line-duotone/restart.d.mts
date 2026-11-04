@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxwYXRoIG9wYWNpdHk9IjAuNSIgZD0iTTE4LjM2MzcgOC4wNTAyNUwxNy42NTY2IDcuMzQzMTVDMTQuNTMyNCA0LjIxODk1IDkuNDY3MSA0LjIxODk1IDYuMzQyOSA3LjM0MzE1QzMuMjE4NzEgMTAuNDY3MyAzLjIxODcxIDE1LjUzMjcgNi4zNDI5IDE4LjY1NjlDOS40NjcxIDIxLjc4MSAxNC41MzI0IDIxLjc4MSAxNy42NTY2IDE4LjY1NjlDMTkuNDczNCAxNi44NCAyMC4yMzM3IDE0LjM2NjggMTkuOTM3NCAxMi4wMDA1IiBzdHJva2U9IiMxQzI3NEMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTE0LjEyMTEgOC4wNDkyOEgxOC4zNjM3TDE4LjM2MzcgMy44MDY2NCIgc3Ryb2tlPSIjMUMyNzRDIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=)
+ */
+export declare const RestartIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;

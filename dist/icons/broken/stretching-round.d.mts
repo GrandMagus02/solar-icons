@@ -1,0 +1,8 @@
+/**
+ * ![img](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiIC8+CjxjaXJjbGUgY3g9IjE0LjUiIGN5PSI0LjUiIHI9IjIuNSIgc3Ryb2tlPSIjMUMyNzRDIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0xOSAyMS45OTU5VjE4LjA0ODlDMTkgMTYuMjczIDE3LjM5NSAxNC45MTk5IDE1LjYyNjUgMTUuMjA0N003Ljk0ODA2IDEzLjQzNDhMNy45MjMyOCAxMy40MTA5QzYuODgxNDMgMTIuNDA0IDcuNjg2NCAxMC43ODUyIDguNTkzMiAxMC4xNDI3QzkuNSA5LjUwMDE2IDEzLjM0NTEgOC41MDAxNiAxMy4zNDUxIDEzLjQzNDVDMTMuMzQ1MSAxNS4xMjczIDEyLjg3MDQgMTYuNzEzMSAxMi4wNDMzIDE4LjA0ODlNNSAyMi4wMDAzQzYuNDYwNTMgMjIuMDAwMyA3LjgyMDAzIDIxLjYyNTYgOSAyMC45Njc5IiBzdHJva2U9IiMxQzI3NEMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==)
+ */
+export declare const StretchingRoundIcon: (props: Record<string, unknown>, { attrs }: {
+  attrs: Record<string, unknown>;
+}) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+  [key: string]: any;
+}>;
