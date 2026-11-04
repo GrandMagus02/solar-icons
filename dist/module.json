@@ -1,0 +1,12 @@
+{
+  "name": "@solar-icons/nuxt",
+  "configKey": "solarIcons",
+  "compatibility": {
+    "nuxt": ">=3.0.0"
+  },
+  "version": "2.3.3",
+  "builder": {
+    "@nuxt/module-builder": "1.0.3",
+    "unbuild": "unknown"
+  }
+}
