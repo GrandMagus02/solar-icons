@@ -1,0 +1,1618 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Solar Icons: animated prototype</title>
+<style>
+    :root {
+        --ink: #1c274c;
+        --muted: #7a8299;
+        --line: #e7e9f0;
+        --accent: #2f80ed;
+        --bg: #fbfbfd;
+        color-scheme: light;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        font: 14px/1.5 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+    }
+    main { max-width: 980px; margin: 0 auto; padding: 48px 24px 96px; }
+    h1 {
+        display: flex; align-items: center; justify-content: center; gap: 10px;
+        margin: 0; font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .pill {
+        background: var(--accent); color: #fff; border-radius: 999px;
+        padding: 3px 12px; font-size: 12px; letter-spacing: 0.04em;
+    }
+    .sub { text-align: center; color: var(--muted); margin: 8px 0 0; }
+    h2 { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; margin: 64px 0 4px; }
+    h2 + p { color: var(--muted); margin: 0 0 20px; }
+    code { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; background: #eef0f6; padding: 1px 5px; border-radius: 4px; }
+
+    svg.solar { width: 1em; height: 1em; overflow: visible; stroke-width: 1.5; display: block; }
+
+    .reel {
+        display: grid; grid-template-columns: repeat(6, 1fr); gap: 28px 0;
+        margin: 36px auto 0; max-width: 640px; font-size: 44px;
+    }
+    .reel .cell { display: grid; place-items: center; gap: 6px; cursor: pointer; }
+    .reel .cell span { font-size: 10px; color: var(--muted); opacity: 0; transition: opacity .15s; white-space: nowrap; }
+    .reel .cell:hover span { opacity: 1; }
+
+    .toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; margin-top: 32px; }
+    button {
+        font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line);
+        border-radius: 10px; padding: 7px 14px; cursor: pointer;
+        display: inline-flex; align-items: center; gap: 8px;
+    }
+    button:hover { border-color: #cfd4e2; }
+    button.primary { background: var(--ink); color: #fff; border-color: var(--ink); }
+    label.inline { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); }
+
+    .scrub { max-width: 640px; margin: 28px auto 0; }
+    .scrub input { width: 100%; accent-color: var(--accent); }
+    .phases { display: grid; grid-template-columns: 10fr 17fr 23fr 50fr; gap: 4px; margin-top: 6px; }
+    .phases div { border-top: 3px solid var(--line); padding-top: 6px; font-size: 11px; color: var(--muted); }
+    .phases div.on { border-color: var(--accent); color: var(--ink); }
+    .phases b { display: block; font-size: 12px; }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+    .card h3 { margin: 0 0 2px; font-size: 14px; }
+    .card p { margin: 0 0 16px; color: var(--muted); font-size: 12.5px; }
+    .row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; font-size: 28px; }
+    .tagged { display: grid; justify-items: center; gap: 4px; }
+    .tagged small { font-size: 10.5px; color: var(--muted); }
+
+    .swap-stage { display: flex; align-items: center; gap: 18px; font-size: 56px; }
+    .swap-stage .label { font: 12px ui-monospace, Menlo, monospace; color: var(--muted); min-width: 170px; }
+
+    .badge-btn { position: relative; }
+    .note { margin-top: 64px; color: var(--muted); font-size: 12.5px; text-align: center; }
+</style>
+</head>
+<body>
+<main>
+    <h1>Chat and Messaging <span class="pill">Animated</span></h1>
+    <p class="sub">Solar Linear icons · WAAPI + CSS, zero dependencies · hover or click any icon</p>
+
+    <div class="reel" id="reel"></div>
+
+    <div class="toolbar">
+        <button class="primary" id="play-all">Play reel</button>
+        <button id="cascade">Cascade</button>
+        <label class="inline"><input type="checkbox" id="loop" /> Loop</label>
+        <label class="inline">Speed <input type="range" id="speed" min="0.25" max="2" step="0.05" value="1" /> <span id="speed-out">1×</span></label>
+    </div>
+
+    <div class="scrub">
+        <input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Scrub the reel" />
+        <div class="phases" id="phases">
+            <div><b>Anticipate</b>details retract</div>
+            <div><b>Simplify</b>base silhouette</div>
+            <div><b>Rebuild</b>draw &amp; pop back</div>
+            <div><b>Settle</b>overshoot → rest</div>
+        </div>
+    </div>
+
+    <h2>Triggers</h2>
+    <p>The same runtime, wired with <code>bind()</code> or plain <code>data-solar-*</code> attributes and <code>autoBind()</code>.</p>
+    <div class="cards">
+        <div class="card">
+            <h3>Hover: generic presets</h3>
+            <p>Work on any of the 8,700+ icons, no per-icon data.</p>
+            <div class="row" id="generic"></div>
+        </div>
+        <div class="card">
+            <h3>Group hover</h3>
+            <p>Hovering the button animates its icon (<code>data-solar-group</code>).</p>
+            <div class="row" style="font-size:18px" id="group"></div>
+        </div>
+        <div class="card">
+            <h3>Click</h3>
+            <p>Longer signature animations, interruptible on rapid clicks.</p>
+            <div class="row" id="click"></div>
+        </div>
+        <div class="card">
+            <h3>Appear</h3>
+            <p>Strokes draw in when scrolled into view (<code>inView</code>).</p>
+            <div class="row" id="appear"></div>
+            <div style="margin-top:14px"><button id="replay-appear">Replay</button></div>
+        </div>
+        <div class="card">
+            <h3>Loop</h3>
+            <p>Status states: typing, unread pulse, sync, and an ambient path-morph <code>flicker</code> (hover still plays on top).</p>
+            <div class="row" id="loops"></div>
+        </div>
+        <div class="card">
+            <h3>Duotone layers</h3>
+            <p><code>layer-stagger</code> keys off the secondary <code>opacity</code> layer.</p>
+            <div class="row" id="duotone"></div>
+        </div>
+    </div>
+
+    <h2>Transitions</h2>
+    <p><code>swap()</code> keeps geometry the two icons share and only rebuilds the details; unrelated icons cross-swap.</p>
+    <div class="cards">
+        <div class="card">
+            <h3>Shared container</h3>
+            <p>chat-round-* family: the bubble never leaves.</p>
+            <div class="swap-stage"><span id="swap-shared"></span><span class="label" id="swap-shared-label"></span></div>
+            <div style="margin-top:14px"><button id="swap-shared-next">Next icon</button></div>
+        </div>
+        <div class="card">
+            <h3>Cross-swap</h3>
+            <p>No shared geometry: rotate/scale/blur swap.</p>
+            <div class="swap-stage"><span id="swap-fade"></span><span class="label" id="swap-fade-label"></span></div>
+            <div style="margin-top:14px"><button id="swap-fade-next">Next icon</button></div>
+        </div>
+        <div class="card">
+            <h3>Toggle</h3>
+            <p>A real control: mark as read.</p>
+            <div class="swap-stage"><button id="toggle" style="font-size:22px;padding:10px 14px"></button><span class="label" id="toggle-label">unread</span></div>
+        </div>
+    </div>
+
+    <p class="note">Respects <code>prefers-reduced-motion</code>. Prototype: experiments/animated-icons.</p>
+</main>
+<script type="module">
+// ---- icons.js
+// Generated by build.mjs (Linear). Do not edit.
+const icons = {
+    "chat-round-warning": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round-warning\" data-solar-icon=\"chat-round-warning\"><g data-solar-root=\"\"><path data-part=\"bubble\" pathLength=\"1\" d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"bar\" pathLength=\"1\" d=\"M12 7.5V13.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"dot\" pathLength=\"1\" d=\"M12 16.5H12.0001\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></svg>",
+    "restart-circle": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-restart-circle\" data-solar-icon=\"restart-circle\"><g data-solar-root=\"\"><circle data-part=\"ring\" pathLength=\"1\" cx=\"12\" cy=\"12\" r=\"10\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"arrow\" pathLength=\"1\" d=\"M15.9775 8.71452L15.5355 8.2621C13.5829 6.26318 10.4171 6.26318 8.46447 8.2621C6.51184 10.261 6.51184 13.5019 8.46447 15.5008C10.4171 17.4997 13.5829 17.4997 15.5355 15.5008C16.671 14.3384 17.1462 12.7559 16.9611 11.242M15.9775 6V8.71452H13.3258\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></svg>",
+    "chat-round-unread": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round-unread\" data-solar-icon=\"chat-round-unread\"><g data-solar-root=\"\"><circle data-part=\"badge\" pathLength=\"1\" cx=\"3\" cy=\"3\" r=\"3\" transform=\"matrix(-1 0 0 1 22 2)\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"bubble\" pathLength=\"1\" d=\"M14 2.20004C13.3538 2.06886 12.6849 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22C17.5228 22 22 17.5228 22 12C22 11.3151 21.9311 10.6462 21.8 10\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "chat-square-arrow": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-square-arrow\" data-solar-icon=\"chat-square-arrow\"><g data-solar-root=\"\"><path data-part=\"bubble\" pathLength=\"1\" d=\"M20.9867 14.4441C20.9608 15.4127 20.8841 16.0489 20.6575 16.5893C20.2007 17.6783 19.3247 18.5435 18.2221 18.9946C17.6278 19.2378 16.9192 19.3061 15.7893 19.3254C15.024 19.3384 14.6414 19.3449 14.3375 19.5195C14.0335 19.6941 13.8443 20.0098 13.4659 20.6413L12.978 21.4554C12.5431 22.181 11.4568 22.181 11.022 21.4554L10.5341 20.6413C10.1557 20.0098 9.96644 19.6941 9.66251 19.5195C9.35858 19.3449 8.97593 19.3384 8.21062 19.3254C7.0808 19.3061 6.3722 19.2378 5.77792 18.9946C4.6753 18.5435 3.79926 17.6783 3.34254 16.5893C3 15.7725 3 14.7371 3 12.6662V11.7773C3 8.86759 3 7.41271 3.66312 6.34395C4.03417 5.74592 4.54326 5.24312 5.14876 4.87664C6.11255 4.29332 7.02949 4.22961 9.3 4.22266\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"arrow\" pathLength=\"1\" d=\"M12 4.22266L14.25 6.4449\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"arrow\" pathLength=\"1\" d=\"M12 4.22224L14.25 2\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"bubble\" pathLength=\"1\" d=\"M21 11.7782C21 8.86844 21 7.41357 20.3369 6.3448C19.9658 5.74677 19.4567 5.24397 18.8512 4.8775C17.7693 4.22266 14.9469 4.22266 12.0013 4.22266H12\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "chat-round-like": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round-like\" data-solar-icon=\"chat-round-like\"><g data-solar-root=\"\"><path data-part=\"bubble\" pathLength=\"1\" d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"heart\" pathLength=\"1\" d=\"M7.5 11.1093C7.5 12.4777 8.81884 13.9135 10.0286 14.9426C10.8524 15.6435 11.2644 15.9939 12 15.9939C12.7356 15.9939 13.1476 15.6435 13.9714 14.9426C15.1812 13.9135 16.5 12.4777 16.5 11.1093C16.5 8.43212 14.0249 7.4326 12 9.50069C9.97507 7.4326 7.5 8.43212 7.5 11.1093Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></svg>",
+    "inbox": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-inbox\" data-solar-icon=\"inbox\"><g data-solar-root=\"\"><path data-part=\"box\" pathLength=\"1\" d=\"M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"tray\" pathLength=\"1\" d=\"M2 13H5.16026C6.06543 13 6.51802 13 6.91584 13.183C7.31367 13.3659 7.60821 13.7096 8.19729 14.3968L8.80271 15.1032C9.39179 15.7904 9.68633 16.1341 10.0842 16.317C10.482 16.5 10.9346 16.5 11.8397 16.5H12.1603C13.0654 16.5 13.518 16.5 13.9158 16.317C14.3137 16.1341 14.6082 15.7904 15.1973 15.1032L15.8027 14.3968C16.3918 13.7096 16.6863 13.3659 17.0842 13.183C17.482 13 17.9346 13 18.8397 13H22\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "user-speak-rounded": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-user-speak-rounded\" data-solar-icon=\"user-speak-rounded\"><g data-solar-root=\"\"><circle data-part=\"head\" pathLength=\"1\" cx=\"10\" cy=\"6\" r=\"4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><ellipse data-part=\"body\" pathLength=\"1\" cx=\"10\" cy=\"17\" rx=\"7\" ry=\"4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"wave\" pathLength=\"1\" d=\"M19 2C19 2 21 3.2 21 6C21 8.8 19 10 19 10\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"wave\" pathLength=\"1\" d=\"M17 4C17 4 18 4.6 18 6C18 7.4 17 8 17 8\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "list": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-list\" data-solar-icon=\"list\"><g data-solar-root=\"\"><path data-part=\"row\" pathLength=\"1\" d=\"M20 7L4 7\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"row\" pathLength=\"1\" d=\"M15 12L4 12\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"row\" pathLength=\"1\" d=\"M9 17H4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "user-circle": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-user-circle\" data-solar-icon=\"user-circle\"><g data-solar-root=\"\"><circle data-part=\"head\" pathLength=\"1\" cx=\"12\" cy=\"9\" r=\"3\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><circle data-part=\"ring\" pathLength=\"1\" cx=\"12\" cy=\"12\" r=\"10\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"body\" pathLength=\"1\" d=\"M17.9691 20C17.81 17.1085 16.9247 15 11.9999 15C7.07521 15 6.18991 17.1085 6.03076 20\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "chat-round": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round\" data-solar-icon=\"chat-round\"><g data-solar-root=\"\"><path data-part=\"bubble\" pathLength=\"1\" d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "star-circle": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-star-circle\" data-solar-icon=\"star-circle\"><g data-solar-root=\"\"><circle data-part=\"ring\" pathLength=\"1\" cx=\"12\" cy=\"12\" r=\"10\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"star\" pathLength=\"1\" d=\"M10.5766 8.20419C11.2099 7.06806 11.5266 6.5 12 6.5C12.4734 6.5 12.7901 7.06806 13.4234 8.20419L13.5873 8.49812C13.7672 8.82097 13.8572 8.98239 13.9975 9.0889C14.1378 9.19541 14.3126 9.23495 14.6621 9.31402L14.9802 9.38601C16.2101 9.66428 16.825 9.80341 16.9713 10.2739C17.1176 10.7443 16.6984 11.2345 15.86 12.215L15.643 12.4686C15.4048 12.7472 15.2857 12.8865 15.2321 13.0589C15.1785 13.2312 15.1965 13.4171 15.2325 13.7888L15.2653 14.1272C15.3921 15.4353 15.4554 16.0894 15.0724 16.3801C14.6894 16.6709 14.1137 16.4058 12.9622 15.8756L12.6643 15.7384C12.337 15.5878 12.1734 15.5124 12 15.5124C11.8266 15.5124 11.663 15.5878 11.3357 15.7384L11.0378 15.8756C9.88634 16.4058 9.31059 16.6709 8.92757 16.3801C8.54456 16.0894 8.60794 15.4353 8.7347 14.1272L8.76749 13.7888C8.80351 13.4171 8.82152 13.2312 8.76793 13.0589C8.71434 12.8865 8.59521 12.7472 8.35696 12.4686L8.14005 12.215C7.30162 11.2345 6.88241 10.7443 7.02871 10.2739C7.17501 9.80341 7.78993 9.66428 9.01977 9.38601L9.33794 9.31402C9.68743 9.23495 9.86217 9.19541 10.0025 9.0889C10.1428 8.98239 10.2328 8.82097 10.4127 8.49812L10.5766 8.20419Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "pen-new-round": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-pen-new-round\" data-solar-icon=\"pen-new-round\"><g data-solar-root=\"\"><path data-part=\"pen\" pathLength=\"1\" d=\"M16.652 3.45506L17.3009 2.80624C18.3759 1.73125 20.1188 1.73125 21.1938 2.80624C22.2687 3.88124 22.2687 5.62415 21.1938 6.69914L20.5449 7.34795M16.652 3.45506C16.652 3.45506 16.7331 4.83379 17.9497 6.05032C19.1662 7.26685 20.5449 7.34795 20.5449 7.34795M16.652 3.45506L10.6872 9.41993C10.2832 9.82394 10.0812 10.0259 9.90743 10.2487C9.70249 10.5114 9.52679 10.7957 9.38344 11.0965C9.26191 11.3515 9.17157 11.6225 8.99089 12.1646L8.41242 13.9M8.41242 13.9L8.03811 15.0229C7.9492 15.2897 8.01862 15.5837 8.21744 15.7826C8.41626 15.9814 8.71035 16.0508 8.97709 15.9619L10.1 15.5876L11.8354 15.0091C12.3775 14.8284 12.6485 14.7381 12.9035 14.6166C13.2043 14.4732 13.4886 14.2975 13.7513 14.0926C13.9741 13.9188 14.1761 13.7168 14.5801 13.3128L20.5449 7.34795M10.1 15.5876L8.41242 13.9\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"arc\" pathLength=\"1\" d=\"M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "pen-2": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-pen-2\" data-solar-icon=\"pen-2\"><g data-solar-root=\"\"><path data-part=\"base\" pathLength=\"1\" d=\"M4 22H20\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"pen\" pathLength=\"1\" d=\"M13.8881 3.66293L14.6296 2.92142C15.8581 1.69286 17.85 1.69286 19.0786 2.92142C20.3071 4.14999 20.3071 6.14188 19.0786 7.37044L18.3371 8.11195M13.8881 3.66293C13.8881 3.66293 13.9807 5.23862 15.3711 6.62894C16.7614 8.01926 18.3371 8.11195 18.3371 8.11195M13.8881 3.66293L7.07106 10.4799C6.60933 10.9416 6.37846 11.1725 6.17992 11.4271C5.94571 11.7273 5.74491 12.0522 5.58107 12.396C5.44219 12.6874 5.33894 12.9972 5.13245 13.6167L4.25745 16.2417M4.25745 16.2417L4.04356 16.8833C3.94194 17.1882 4.02128 17.5243 4.2485 17.7515C4.47573 17.9787 4.81182 18.0581 5.11667 17.9564L5.75834 17.7426L8.38334 16.8675C9.00282 16.6611 9.31256 16.5578 9.60398 16.4189C9.94775 16.2551 10.2727 16.0543 10.5729 15.8201C10.8275 15.6215 11.0584 15.3907 11.5201 14.9289L18.3371 8.11195M5.75834 17.7426L4.25745 16.2417\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "chat-round-quote": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round-quote\" data-solar-icon=\"chat-round-quote\"><g data-solar-root=\"\"><path data-part=\"bubble\" pathLength=\"1\" d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"quote\" pathLength=\"1\" d=\"M6.75342 15.3545C9.6606 15.3545 10.2564 13.9635 10.5276 12.7201C10.5495 12.6048 10.556 12.5998 10.5788 12.3856C10.6035 12.1528 10.6353 11.9429 10.6353 11.5171C10.6489 11.2842 10.6357 10.9645 10.6357 10.5857C10.6357 9.6706 10.6357 9.21307 10.3514 8.9288C10.0671 8.64453 9.60959 8.64453 8.69454 8.64453C7.77949 8.64453 7.32196 8.64453 7.03769 8.9288C6.75342 9.21307 6.75342 9.6706 6.75342 10.5857C6.75342 11.5007 6.75342 11.9582 7.03769 12.2425C7.27805 12.4829 7.64228 12.5199 8.30221 12.5257C8.42277 12.5267 8.52203 12.5027 8.6093 12.612C8.69656 12.7213 8.67261 12.8174 8.63241 12.9595C8.42591 13.6895 7.34262 14.9272 6.75342 15.3545Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path data-part=\"quote\" pathLength=\"1\" d=\"M13.3589 15.3545C16.2661 15.3545 16.8619 13.9635 17.133 12.7201C17.1549 12.6048 17.1615 12.5998 17.1843 12.3856C17.209 12.1528 17.2407 11.9429 17.2407 11.5171C17.2544 11.2842 17.2411 10.9645 17.2411 10.5857C17.2411 9.6706 17.2411 9.21307 16.9569 8.9288C16.6726 8.64453 16.2151 8.64453 15.3 8.64453C14.385 8.64453 13.9274 8.64453 13.6432 8.9288C13.3589 9.21307 13.3589 9.6706 13.3589 10.5857C13.3589 11.5007 13.3589 11.9582 13.6432 12.2425C13.8835 12.4829 14.2477 12.5199 14.9077 12.5257C15.0282 12.5267 15.1275 12.5027 15.2148 12.612C15.302 12.7213 15.2781 12.8174 15.2379 12.9595C15.0314 13.6895 13.9481 14.9272 13.3589 15.3545Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></svg>",
+    "chat-round-question-mark": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round-question-mark\" data-solar-icon=\"chat-round-question-mark\"><g data-solar-root=\"\"><path data-part=\"bubble\" pathLength=\"1\" d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"hook\" pathLength=\"1\" d=\"M10.125 9.375C10.125 8.33947 10.9645 7.5 12 7.5C13.0355 7.5 13.875 8.33947 13.875 9.375C13.875 10.0624 13.505 10.6635 12.9534 10.9899C12.478 11.2711 12 11.6977 12 12.25V13.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"dot\" pathLength=\"1\" d=\"M12 16.5H12.0001\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></svg>",
+    "chat-round-money": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round-money\" data-solar-icon=\"chat-round-money\"><g data-solar-root=\"\"><path data-part=\"bubble\" pathLength=\"1\" d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"sign\" pathLength=\"1\" d=\"M12 15.3333C13.1046 15.3333 14 14.5871 14 13.6667C14 12.7462 13.1046 12 12 12C10.8954 12 10 11.2538 10 10.3333C10 9.41286 10.8954 8.66667 12 8.66667M12 15.3333C10.8954 15.3333 10 14.5871 10 13.6667M12 15.3333V16M12 8V8.66667M12 8.66667C13.1046 8.66667 14 9.41286 14 10.3333\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "translation": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-translation\" data-solar-icon=\"translation\"><g data-solar-root=\"\"><path data-part=\"outer\" pathLength=\"1\" d=\"M19.1414 5.00003C20.9097 6.80378 22 9.27458 22 12C22 14.7578 20.8836 17.2549 19.0782 19.064M5 19.1415C3.14864 17.3265 2 14.7974 2 12C2 9.235 3.12222 6.73208 4.93603 4.92188\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path data-part=\"inner\" pathLength=\"1\" d=\"M16.2849 8.04397C17.3458 9.05877 18 10.4488 18 11.9822C18 13.5338 17.3302 14.9386 16.2469 15.9564M7.8 16C6.68918 14.9789 6 13.556 6 11.9822C6 10.4266 6.67333 9.01843 7.76162 8\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle data-part=\"core\" pathLength=\"1\" cx=\"12\" cy=\"12\" r=\"2\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "link-circle": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-link-circle\" data-solar-icon=\"link-circle\"><g data-solar-root=\"\"><path data-part=\"left\" pathLength=\"1\" d=\"M14 12C14 15.3137 11.3137 18 8 18C4.68629 18 2 15.3137 2 12C2 8.68629 4.68629 6 8 6\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"right\" pathLength=\"1\" d=\"M10 12C10 8.68629 12.6863 6 16 6C19.3137 6 22 8.68629 22 12C22 15.3137 19.3137 18 16 18\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "letter-unread": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-letter-unread\" data-solar-icon=\"letter-unread\"><g data-solar-root=\"\"><path data-part=\"envelope\" pathLength=\"1\" d=\"M22 10C22.0185 10.7271 22 11.0542 22 12C22 15.7712 22 17.6569 20.8284 18.8284C19.6569 20 17.7712 20 14 20H10C6.22876 20 4.34315 20 3.17157 18.8284C2 17.6569 2 15.7712 2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"flap\" pathLength=\"1\" d=\"M6 8L8.1589 9.79908C9.99553 11.3296 10.9139 12.0949 12 12.0949C13.0861 12.0949 14.0045 11.3296 15.8411 9.79908\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><circle data-part=\"badge\" pathLength=\"1\" cx=\"19\" cy=\"5\" r=\"3\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "chat-round-code": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round-code\" data-solar-icon=\"chat-round-code\"><g data-solar-root=\"\"><path data-part=\"bubble\" pathLength=\"1\" d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"right\" pathLength=\"1\" d=\"M15.5 9L15.6716 9.17157C17.0049 10.5049 17.6716 11.1716 17.6716 12C17.6716 12.8284 17.0049 13.4951 15.6716 14.8284L15.5 15\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"slash\" pathLength=\"1\" d=\"M13.2939 7.16992L11.9998 11.9996L10.7058 16.8292\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"left\" pathLength=\"1\" d=\"M8.50019 9L8.32861 9.17157C6.99528 10.5049 6.32861 11.1716 6.32861 12C6.32861 12.8284 6.99528 13.4951 8.32861 14.8284L8.50019 15\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "chat-round-dots": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round-dots\" data-solar-icon=\"chat-round-dots\"><g data-solar-root=\"\"><path data-part=\"bubble\" pathLength=\"1\" d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"dot\" pathLength=\"1\" d=\"M8 12H8.009\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path data-part=\"dot\" pathLength=\"1\" d=\"M11.991 12H12\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path data-part=\"dot\" pathLength=\"1\" d=\"M15.991 12H16\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></svg>",
+    "chat-round-line": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round-line\" data-solar-icon=\"chat-round-line\"><g data-solar-root=\"\"><path data-part=\"bubble\" pathLength=\"1\" d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"line\" pathLength=\"1\" d=\"M8 10.5H16\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"line\" pathLength=\"1\" d=\"M8 14H13.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "fire": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-fire\" data-solar-icon=\"fire\"><g data-solar-root=\"\"><path data-part=\"outer\" pathLength=\"1\" d=\"M20 13.1111C20 20.2222 13.9556 22 10.9333 22C8.28889 22 3 20.2222 3 13.1111C3 10.3295 4.46147 8.46138 5.85996 7.39454C6.63841 6.80069 7.6304 7.39197 7.73017 8.36598L7.816 9.20382C7.92052 10.2241 8.84932 11.0606 9.70932 10.5017C11.3938 9.40705 12 6.7752 12 5.33334V5.00971C12 3.58 13.4438 2.65985 14.6023 3.49767C17.1653 5.35127 20 8.58427 20 13.1111Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"inner\" pathLength=\"1\" d=\"M8 18.4445C8 21.2889 10.4889 22 11.7333 22C12.8222 22 15 21.2889 15 18.4445C15 17.3435 14.4107 16.6002 13.8404 16.1713C13.4424 15.872 12.8828 16.1408 12.7459 16.6196C12.5675 17.2437 11.9228 17.636 11.5944 17.0759C11.2941 16.5638 11.2941 15.7957 11.2941 15.3334C11.2941 14.6968 10.6539 14.2847 10.1389 14.6589C9.10649 15.4091 8 16.6815 8 18.4445Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "mention-circle": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-mention-circle\" data-solar-icon=\"mention-circle\"><g data-solar-root=\"\"><path data-part=\"at\" pathLength=\"1\" d=\"M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 12.7215 17.8726 13.4133 17.6392 14.054C17.5551 14.285 17.4075 14.4861 17.2268 14.6527L17.1463 14.727C16.591 15.2392 15.7573 15.3049 15.1288 14.8858C14.6735 14.5823 14.4 14.0713 14.4 13.5241V12M14.4 12C14.4 13.3255 13.3255 14.4 12 14.4C10.6745 14.4 9.6 13.3255 9.6 12C9.6 10.6745 10.6745 9.6 12 9.6C13.3255 9.6 14.4 10.6745 14.4 12Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"ring\" pathLength=\"1\" d=\"M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "chat-round-check": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round-check\" data-solar-icon=\"chat-round-check\"><g data-solar-root=\"\"><path data-part=\"part\" pathLength=\"1\" d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M9 12.08L11 14L15 10\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></svg>",
+    "chat-round-close": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round-close\" data-solar-icon=\"chat-round-close\"><g data-solar-root=\"\"><path data-part=\"part\" pathLength=\"1\" d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "chat-round-add": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round-add\" data-solar-icon=\"chat-round-add\"><g data-solar-root=\"\"><path data-part=\"part\" pathLength=\"1\" d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "chat-round-call": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round-call\" data-solar-icon=\"chat-round-call\"><g data-solar-root=\"\"><path data-part=\"part\" pathLength=\"1\" d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M12 16V8\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M8 14V10\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M16 14V10\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "chat-round-video": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round-video\" data-solar-icon=\"chat-round-video\"><g data-solar-root=\"\"><path data-part=\"part\" pathLength=\"1\" d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M16 12C16 11.1555 15.0732 10.586 13.2195 9.44695C11.3406 8.29234 10.4011 7.71504 9.70056 8.13891C9 8.56279 9 9.70853 9 12C9 14.2915 9 15.4372 9.70056 15.8611C10.4011 16.285 11.3406 15.7077 13.2195 14.5531C15.0732 13.414 16 12.8445 16 12Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "letter": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-letter\" data-solar-icon=\"letter\"><g data-solar-root=\"\"><path data-part=\"part\" pathLength=\"1\" d=\"M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12C22 15.7712 22 17.6569 20.8284 18.8284C19.6569 20 17.7712 20 14 20H10C6.22876 20 4.34315 20 3.17157 18.8284C2 17.6569 2 15.7712 2 12Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M6 8L8.1589 9.79908C9.99553 11.3296 10.9139 12.0949 12 12.0949C13.0861 12.0949 14.0045 11.3296 15.8411 9.79908L18 8\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "letter-opened": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-letter-opened\" data-solar-icon=\"letter-opened\"><g data-solar-root=\"\"><path data-part=\"part\" pathLength=\"1\" d=\"M18 6.10156C19.3001 6.22944 20.1752 6.51846 20.8284 7.17164C22 8.34322 22 10.2288 22 14.0001C22 17.7713 22 19.6569 20.8284 20.8285C19.6569 22.0001 17.7712 22.0001 14 22.0001H10C6.22876 22.0001 4.34315 22.0001 3.17157 20.8285C2 19.6569 2 17.7713 2 14.0001C2 10.2288 2 8.34322 3.17157 7.17164C3.82475 6.51846 4.69989 6.22944 6 6.10156\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M10 6H14\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M11 9H13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M8.1589 11.7991L7.43926 11.1994C6.73152 10.6096 6.37764 10.3147 6.18882 9.91156C6 9.50842 6 9.04778 6 8.1265V7C6 4.64298 6 3.46447 6.73223 2.73223C7.46447 2 8.64298 2 11 2H13C15.357 2 16.5355 2 17.2678 2.73223C18 3.46447 18 4.64298 18 7V8.1265C18 9.04778 18 9.50842 17.8112 9.91156C17.6224 10.3147 17.2685 10.6096 16.5607 11.1994L15.8411 11.7991C14.0045 13.3296 13.0861 14.0949 12 14.0949C10.9139 14.0949 9.99553 13.3296 8.1589 11.7991Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M6 10L8.1589 11.7991C9.99553 13.3296 10.9139 14.0949 12 14.0949C13.0861 14.0949 14.0045 13.3296 15.8411 11.7991L18 10\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "inbox-in": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-inbox-in\" data-solar-icon=\"inbox-in\"><g data-solar-root=\"\"><path data-part=\"part\" pathLength=\"1\" d=\"M12 2L12 10M9 7L12 10L15 7\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M2 13H5.16026C6.06543 13 6.51802 13 6.91584 13.183C7.31367 13.3659 7.60821 13.7096 8.19729 14.3968L8.80271 15.1032C9.39179 15.7904 9.68633 16.1341 10.0842 16.317C10.482 16.5 10.9346 16.5 11.8397 16.5H12.1603C13.0654 16.5 13.518 16.5 13.9158 16.317C14.3137 16.1341 14.6082 15.7904 15.1973 15.1032L15.8027 14.3968C16.3918 13.7096 16.6863 13.3659 17.0842 13.183C17.482 13 17.9346 13 18.8397 13H22\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M17 2.12695C18.6251 2.28681 19.7191 2.64808 20.5355 3.46455C22 4.92902 22 7.28604 22 12.0001C22 16.7141 22 19.0712 20.5355 20.5356C19.0711 22.0001 16.714 22.0001 12 22.0001C7.28595 22.0001 4.92893 22.0001 3.46447 20.5356C2 19.0712 2 16.7141 2 12.0001C2 7.28604 2 4.92902 3.46447 3.46455C4.28094 2.64808 5.37486 2.28681 7 2.12695\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "inbox-out": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-inbox-out\" data-solar-icon=\"inbox-out\"><g data-solar-root=\"\"><path data-part=\"part\" pathLength=\"1\" d=\"M17 2.12695C18.6251 2.28681 19.7191 2.64808 20.5355 3.46455C22 4.92902 22 7.28604 22 12.0001C22 16.7141 22 19.0712 20.5355 20.5356C19.0711 22.0001 16.714 22.0001 12 22.0001C7.28595 22.0001 4.92893 22.0001 3.46447 20.5356C2 19.0712 2 16.7141 2 12.0001C2 7.28604 2 4.92902 3.46447 3.46455C4.28094 2.64808 5.37486 2.28681 7 2.12695\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M12 10L12 2M9 5L12 2L15 5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M2 13H5.16026C6.06543 13 6.51802 13 6.91584 13.183C7.31367 13.3659 7.60821 13.7096 8.19729 14.3968L8.80271 15.1032C9.39179 15.7904 9.68633 16.1341 10.0842 16.317C10.482 16.5 10.9346 16.5 11.8397 16.5H12.1603C13.0654 16.5 13.518 16.5 13.9158 16.317C14.3137 16.1341 14.6082 15.7904 15.1973 15.1032L15.8027 14.3968C16.3918 13.7096 16.6863 13.3659 17.0842 13.183C17.482 13 17.9346 13 18.8397 13H22\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "chat-round-line@LineDuotone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round-line@duotone\" data-solar-icon=\"chat-round-line@duotone\"><g data-solar-root=\"\"><path data-part=\"part\" pathLength=\"1\" d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" opacity=\"0.5\" d=\"M8 10.5H16\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" opacity=\"0.5\" d=\"M8 14H13.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "letter-unread@LineDuotone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-letter-unread@duotone\" data-solar-icon=\"letter-unread@duotone\"><g data-solar-root=\"\"><path data-part=\"part\" pathLength=\"1\" opacity=\"0.5\" d=\"M22 10C22.0185 10.7271 22 11.0542 22 12C22 15.7712 22 17.6569 20.8284 18.8284C19.6569 20 17.7712 20 14 20H10C6.22876 20 4.34315 20 3.17157 18.8284C2 17.6569 2 15.7712 2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" d=\"M6 8L8.1589 9.79908C9.99553 11.3296 10.9139 12.0949 12 12.0949C13.0861 12.0949 14.0045 11.3296 15.8411 9.79908\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><circle data-part=\"part\" pathLength=\"1\" cx=\"19\" cy=\"5\" r=\"3\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "inbox@LineDuotone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-inbox@duotone\" data-solar-icon=\"inbox@duotone\"><g data-solar-root=\"\"><path data-part=\"part\" pathLength=\"1\" d=\"M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" opacity=\"0.5\" d=\"M2 13H5.16026C6.06543 13 6.51802 13 6.91584 13.183C7.31367 13.3659 7.60821 13.7096 8.19729 14.3968L8.80271 15.1032C9.39179 15.7904 9.68633 16.1341 10.0842 16.317C10.482 16.5 10.9346 16.5 11.8397 16.5H12.1603C13.0654 16.5 13.518 16.5 13.9158 16.317C14.3137 16.1341 14.6082 15.7904 15.1973 15.1032L15.8027 14.3968C16.3918 13.7096 16.6863 13.3659 17.0842 13.183C17.482 13 17.9346 13 18.8397 13H22\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g></svg>",
+    "chat-round-dots@LineDuotone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"solar solar-chat-round-dots@duotone\" data-solar-icon=\"chat-round-dots@duotone\"><g data-solar-root=\"\"><path data-part=\"part\" pathLength=\"1\" d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><path data-part=\"part\" pathLength=\"1\" opacity=\"0.5\" d=\"M8 12H8.009M11.991 12H12M15.991 12H16\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></svg>"
+}
+
+// ---- solar-animate.js
+// Framework-agnostic animation runtime for Solar icons.
+//
+// Everything runs on the Web Animations API: no dependencies, works the same in
+// React, Vue, Svelte, Solid, Angular or plain HTML. Frameworks only need to render
+// the SVG (with `data-solar-root` / `data-part` markers from the build step) and call
+// `play`, `bind` or `swap`, or set `data-solar-*` attributes and call `autoBind`.
+
+const reducedMotion =
+    typeof matchMedia === 'function' ? matchMedia('(prefers-reduced-motion: reduce)') : null
+
+const GEOMETRY = 'path, circle, ellipse, rect, line, polyline, polygon'
+const IDENTITY_ATTRS = ['d', 'cx', 'cy', 'r', 'rx', 'ry', 'x', 'y', 'width', 'height', 'transform']
+
+const config = {
+    speed: 1,
+    respectReducedMotion: true,
+}
+
+const presets = {}
+
+function definePresets(map) {
+    Object.assign(presets, map)
+}
+
+// ---------------------------------------------------------------------------
+// Easing
+// ---------------------------------------------------------------------------
+
+const ease = {
+    in: 'cubic-bezier(0.55, 0, 0.75, 0.2)',
+    out: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+    inOut: 'cubic-bezier(0.65, 0, 0.35, 1)',
+    back: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+}
+
+const springCache = new Map()
+
+/**
+ * Simulates a damped spring and returns a CSS `linear()` easing plus the duration
+ * it takes to settle. Use with two-keyframe animations: the overshoot is baked
+ * into the easing curve, so `scale(0) -> scale(1)` overshoots past 1 on its own.
+ */
+function spring({ stiffness = 220, damping = 14, mass = 1 } = {}) {
+    const key = `${stiffness}/${damping}/${mass}`
+    const cached = springCache.get(key)
+    if (cached) return cached
+
+    const step = 1 / 600
+    const sampleEvery = 10 // one sample per 1/60 s
+    let x = 0
+    let v = 0
+    let t = 0
+    let i = 0
+    let restFor = 0
+    const samples = [0]
+
+    while (t < 4) {
+        const a = (-stiffness * (x - 1) - damping * v) / mass
+        v += a * step
+        x += v * step
+        t += step
+        i++
+        if (i % sampleEvery === 0) samples.push(x)
+        restFor = Math.abs(x - 1) < 0.002 && Math.abs(v) < 0.02 ? restFor + step : 0
+        if (restFor > 0.05) break
+    }
+    samples.push(1)
+
+    const result = {
+        easing: `linear(${samples.map(s => +s.toFixed(4)).join(', ')})`,
+        duration: Math.round(t * 1000),
+    }
+    springCache.set(key, result)
+    return result
+}
+
+// ---------------------------------------------------------------------------
+// Context: how presets address parts of an icon
+// ---------------------------------------------------------------------------
+
+function rootOf(svg) {
+    return svg.querySelector('[data-solar-root]') ?? svg
+}
+
+function context(svg) {
+    const root = rootOf(svg)
+    const all = [...root.querySelectorAll(GEOMETRY)]
+    const cache = new Map()
+    const parts = name => {
+        if (!cache.has(name)) cache.set(name, all.filter(el => el.dataset.part === name))
+        return cache.get(name)
+    }
+    return {
+        svg,
+        root,
+        all,
+        name: svg.dataset.solarIcon,
+        parts,
+        part: name => parts(name)[0],
+        /** Elements drawn with the duotone secondary opacity. */
+        secondary: all.filter(el => el.hasAttribute('opacity')),
+        /** Longest element: a cheap guess at the "container" (bubble, ring, box). */
+        get container() {
+            return all.reduce((best, el) => (length(el) > length(best) ? el : best), all[0])
+        },
+        get details() {
+            const c = this.container
+            return all.filter(el => el !== c)
+        },
+    }
+}
+
+function length(el) {
+    try {
+        return el.getTotalLength()
+    } catch {
+        return 0
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Playback
+// ---------------------------------------------------------------------------
+
+const running = new WeakMap()
+
+function applyOrigin(el, origin = 'center') {
+    // `view-box` origins are given in the icon's 24x24 coordinate space ("12 12"),
+    // anything else is resolved against the element's own bounding box.
+    const match = /^(-?[\d.]+)\s+(-?[\d.]+)$/.exec(origin)
+    if (match) {
+        el.style.transformBox = 'view-box'
+        el.style.transformOrigin = `${match[1]}px ${match[2]}px`
+    } else {
+        el.style.transformBox = 'fill-box'
+        el.style.transformOrigin = origin
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Constant stroke width under scale
+// ---------------------------------------------------------------------------
+//
+// A CSS scale() on an SVG shape scales its stroke too, so a flame growing from
+// scale(0.2) would start with a hairline and overshoot with a heavy line.
+// `vector-effect: non-scaling-stroke` is not an option: it pins strokes to screen
+// pixels and breaks em-based icon sizing. Instead, while an icon has animations,
+// every frame we read each shape's accumulated scale (its own transform and its
+// ancestors' up to the icon) and counter-scale `stroke-width`. Reading computed
+// transforms makes this exact for any keyframes, easing, spring or scrubbed time.
+
+const MIN_SCALE = 0.05
+const tracked = new WeakSet()
+
+function scaleOf(el) {
+    const t = getComputedStyle(el).transform
+    if (!t || t === 'none') return [1, 1]
+    const m = new DOMMatrixReadOnly(t)
+    return [Math.hypot(m.a, m.b), Math.hypot(m.c, m.d)]
+}
+
+function strokeScale(el, svg) {
+    let sx = 1
+    let sy = 1
+    for (let node = el; node && node !== svg; node = node.parentElement) {
+        const [x, y] = scaleOf(node)
+        sx *= x
+        sy *= y
+    }
+    // Near-uniform scales (squash & stretch) use the geometric mean. Strongly
+    // anisotropic ones (a coin flip through scaleX(0)) use the larger axis, so
+    // the stroke thins along the collapsing axis like a real edge-on shape
+    // instead of ballooning.
+    const lo = Math.min(sx, sy)
+    const hi = Math.max(sx, sy)
+    return lo / hi >= 0.5 ? Math.sqrt(sx * sy) : hi
+}
+
+function baseStroke(el) {
+    if (el.__solarStroke === undefined) {
+        el.__solarStroke = parseFloat(el.getAttribute('stroke-width') ?? getComputedStyle(el).strokeWidth) || 0
+    }
+    return el.__solarStroke
+}
+
+function trackStrokes(svg) {
+    if (tracked.has(svg)) return
+    tracked.add(svg)
+    const tick = () => {
+        const shapes = [...svg.querySelectorAll(GEOMETRY)]
+        // Ambient loops that never touch transforms (path morphs) don't keep this alive.
+        if (!svg.getAnimations({ subtree: true }).some(a => a.__solarTransforms !== false)) {
+            shapes.forEach(el => el.style.removeProperty('stroke-width'))
+            tracked.delete(svg)
+            return
+        }
+        for (const el of shapes) {
+            const base = baseStroke(el)
+            if (!base) continue
+            const s = strokeScale(el, svg)
+            if (Math.abs(s - 1) < 0.001) el.style.removeProperty('stroke-width')
+            else el.style.strokeWidth = String(base / Math.max(s, MIN_SCALE))
+        }
+        requestAnimationFrame(tick)
+    }
+    tick()
+}
+
+// ---------------------------------------------------------------------------
+// Path morphing
+// ---------------------------------------------------------------------------
+//
+// Shape changes (a flickering flame) animate the path's `d`. Frames must share the
+// command structure of the original path, which `deformPath` guarantees by moving
+// points rather than rewriting commands. Browsers that can animate the CSS `d`
+// property get a real WAAPI animation (pausable, scrubbable, cancellable); the rest
+// get a requestAnimationFrame interpolator exposing the same small surface.
+
+const PATH_TOKEN = /([MLCSQTHVZ])|(-?(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?)/gi
+const ARITY = { M: 2, L: 2, C: 6, S: 4, Q: 4, T: 2, Z: 0 }
+
+/** Absolute-command path -> segments with explicit point pairs (H/V become L). */
+function parsePath(d) {
+    const segments = []
+    let cmd = null
+    let numbers = []
+    let x = 0
+    let y = 0
+    const flush = () => {
+        if (!cmd) return
+        if (cmd === 'H' || cmd === 'V') {
+            for (const n of numbers) {
+                if (cmd === 'H') x = n
+                else y = n
+                segments.push({ cmd: 'L', values: [x, y] })
+            }
+        } else if (cmd === 'Z') {
+            segments.push({ cmd: 'Z', values: [] })
+        } else {
+            const arity = ARITY[cmd]
+            for (let i = 0; i < numbers.length; i += arity) {
+                const values = numbers.slice(i, i + arity)
+                segments.push({ cmd: cmd === 'M' && i > 0 ? 'L' : cmd, values })
+                x = values[arity - 2]
+                y = values[arity - 1]
+            }
+        }
+        numbers = []
+    }
+    for (const [, command, number] of d.matchAll(PATH_TOKEN)) {
+        if (command) {
+            if (command !== command.toUpperCase()) throw new Error(`Relative path command "${command}" is not supported`)
+            flush()
+            cmd = command
+            if (cmd === 'Z') flush()
+        } else {
+            numbers.push(parseFloat(number))
+        }
+    }
+    flush()
+    return segments
+}
+
+const serialize = segments =>
+    segments.map(s => s.cmd + s.values.map(v => +v.toFixed(3)).join(' ')).join('')
+
+/** Moves every point of a path through `fn(x, y) => [x, y]`, keeping its structure. */
+function deformPath(d, fn) {
+    return serialize(
+        parsePath(d).map(({ cmd, values }) => {
+            const out = []
+            for (let i = 0; i < values.length; i += 2) out.push(...fn(values[i], values[i + 1]))
+            return { cmd, values: out }
+        })
+    )
+}
+
+const supportsPathAnimation =
+    typeof CSS !== 'undefined' && !!CSS.supports?.('d', 'path("M0 0")')
+
+function animatePathFallback(el, frames, { duration, delay = 0, iterations = 1, easing }) {
+    // Only linear interpolation between frames: presets that morph supply enough
+    // frames to be smooth, so the per-segment easing isn't needed here.
+    const parsed = frames.map(d => parsePath(d))
+    const original = el.getAttribute('d')
+    const segments = parsed.length - 1
+    let start = null
+    let raf = 0
+    let resolve
+    const finished = new Promise(r => (resolve = r))
+    const frame = now => {
+        start ??= now
+        const elapsed = now - start - delay
+        if (elapsed < 0) {
+            raf = requestAnimationFrame(frame)
+            return
+        }
+        const cycles = elapsed / duration
+        if (cycles >= iterations) {
+            el.setAttribute('d', original)
+            resolve()
+            return
+        }
+        const t = (cycles % 1) * segments
+        const i = Math.min(Math.floor(t), segments - 1)
+        const k = t - i
+        const a = parsed[i]
+        const b = parsed[i + 1]
+        el.setAttribute(
+            'd',
+            serialize(a.map((seg, n) => ({ cmd: seg.cmd, values: seg.values.map((v, j) => v + (b[n].values[j] - v) * k) })))
+        )
+        raf = requestAnimationFrame(frame)
+    }
+    raf = requestAnimationFrame(frame)
+    void easing
+    return {
+        finished,
+        cancel() {
+            cancelAnimationFrame(raf)
+            el.setAttribute('d', original)
+            resolve()
+        },
+    }
+}
+
+function animateTrack(el, keyframes, timing) {
+    const morph = Array.isArray(keyframes) && keyframes.length && typeof keyframes[0] === 'string'
+    if (!morph) {
+        const animation = el.animate(keyframes, timing)
+        animation.__solarTransforms = [keyframes].flat().some(k => k && 'transform' in k)
+        return animation
+    }
+    if (!supportsPathAnimation) return animatePathFallback(el, keyframes, timing)
+    const animation = el.animate(
+        keyframes.map(d => ({ d: `path("${d}")` })),
+        timing
+    )
+    animation.__solarTransforms = false
+    return animation
+}
+
+/** Cancels an icon's animations. Ambient loops live on their own layer. */
+function stop(svg, layer = 'main') {
+    const layers = running.get(svg)
+    for (const animation of layers?.get(layer) ?? []) animation.cancel()
+    layers?.delete(layer)
+}
+
+function isReduced() {
+    return config.respectReducedMotion && !!reducedMotion?.matches
+}
+
+/**
+ * Plays a preset on an icon. Resolves when every track has finished.
+ * A preset is a function `(ctx, options) => Track[]` where a track is
+ * `{ targets, keyframes, duration, delay?, stagger?, easing?, origin?, iterations? }`.
+ * `keyframes` may also be an array of path strings, which morphs the shape.
+ *
+ * `options.layer` (default "main") lets an ambient loop (`layer: 'ambient'`) keep
+ * running underneath hover/click animations, which only replace their own layer.
+ */
+function play(svg, preset, options = {}) {
+    const def = typeof preset === 'function' ? preset : resolvePreset(svg, preset)
+    if (!def) return Promise.resolve()
+    if (isReduced() && !options.force) return Promise.resolve()
+
+    const layer = options.layer ?? 'main'
+    stop(svg, layer)
+    const speed = (options.speed ?? 1) * config.speed
+    const tracks = def(context(svg), options).filter(Boolean)
+    const animations = []
+
+    for (const track of tracks) {
+        const targets = [track.targets].flat().filter(Boolean)
+        targets.forEach((el, index) => {
+            if (track.origin !== false) applyOrigin(el, track.origin)
+            const keyframes =
+                typeof track.keyframes === 'function' ? track.keyframes(el, index) : track.keyframes
+            animations.push(
+                animateTrack(el, keyframes, {
+                    duration: track.duration / speed,
+                    delay: ((track.delay ?? 0) + index * (track.stagger ?? 0)) / speed,
+                    easing: track.easing ?? 'linear',
+                    iterations: track.iterations ?? 1,
+                    direction: track.direction ?? 'normal',
+                    fill: track.fill ?? 'backwards',
+                    composite: track.composite ?? 'replace',
+                })
+            )
+        })
+    }
+
+    if (!running.has(svg)) running.set(svg, new Map())
+    running.get(svg).set(layer, animations)
+    trackStrokes(svg)
+    return Promise.all(animations.map(a => a.finished)).then(
+        () => undefined,
+        () => undefined // cancelled by a newer play()
+    )
+}
+
+function resolvePreset(svg, name) {
+    if (!name) return null
+    // `signature` resolves to the icon's own animation, falling back to `rebuild`.
+    if (name === 'signature') return presets[`signature:${svg.dataset.solarIcon}`] ?? presets.rebuild
+    return presets[name] ?? null
+}
+
+// ---------------------------------------------------------------------------
+// Triggers
+// ---------------------------------------------------------------------------
+
+/**
+ * Wires triggers to an icon. `target` is the element that receives pointer events,
+ * which lets a whole button animate its icon ("group hover"). Returns a cleanup fn.
+ *
+ *   bind(svg, { hover: 'wiggle', click: 'signature', appear: 'draw', loop: 'pulse' })
+ *
+ * `loop` replays a one-shot preset with a pause between runs; `ambient` starts a
+ * preset that loops by itself (e.g. `flicker`). Both run on the ambient layer, so
+ * hover and click animations play on top of them instead of cancelling them.
+ */
+function bind(svg, triggers = {}) {
+    const host = triggers.target ?? svg
+    const cleanups = []
+    const on = (type, fn) => {
+        host.addEventListener(type, fn)
+        cleanups.push(() => host.removeEventListener(type, fn))
+    }
+
+    if (triggers.hover) on('pointerenter', () => play(svg, triggers.hover))
+    if (triggers.click) on('click', () => play(svg, triggers.click))
+    if (triggers.appear) play(svg, triggers.appear)
+
+    if (triggers.inView && typeof IntersectionObserver === 'function') {
+        // Hide until visible so the draw-in doesn't flash the finished icon first.
+        rootOf(svg).style.opacity = '0'
+        const observer = new IntersectionObserver(entries => {
+            if (!entries.some(e => e.isIntersecting)) return
+            observer.disconnect()
+            rootOf(svg).style.opacity = ''
+            play(svg, triggers.inView)
+        }, { threshold: 0.6 })
+        observer.observe(svg)
+        cleanups.push(() => observer.disconnect())
+    }
+
+    if (triggers.loop) {
+        let alive = true
+        const gap = triggers.loopGap ?? 400
+        const tick = () => {
+            if (!alive) return
+            play(svg, triggers.loop, { layer: 'ambient' }).then(() => {
+                if (alive) setTimeout(tick, gap)
+            })
+        }
+        tick()
+        cleanups.push(() => {
+            alive = false
+            stop(svg, 'ambient')
+        })
+    }
+
+    if (triggers.ambient) {
+        play(svg, triggers.ambient, { layer: 'ambient' })
+        cleanups.push(() => stop(svg, 'ambient'))
+    }
+
+    return () => cleanups.forEach(fn => fn())
+}
+
+/**
+ * Declarative wiring for any framework or plain HTML:
+ *
+ *   <button data-solar-group>
+ *     <svg data-solar-icon="chat-round" data-solar-hover="wiggle" data-solar-click="signature">…</svg>
+ *   </button>
+ */
+function autoBind(scope = document) {
+    const cleanups = []
+    for (const svg of scope.querySelectorAll('svg[data-solar-icon]')) {
+        const d = svg.dataset
+        if (!(d.solarHover || d.solarClick || d.solarAppear || d.solarInView || d.solarLoop || d.solarAmbient)) continue
+        cleanups.push(
+            bind(svg, {
+                target: svg.closest('[data-solar-group]') ?? svg,
+                hover: d.solarHover,
+                click: d.solarClick,
+                appear: d.solarAppear,
+                inView: d.solarInView,
+                loop: d.solarLoop,
+                ambient: d.solarAmbient,
+            })
+        )
+    }
+    return () => cleanups.forEach(fn => fn())
+}
+
+// ---------------------------------------------------------------------------
+// Transitions between icons
+// ---------------------------------------------------------------------------
+
+function identity(el) {
+    return `${el.tagName}|${IDENTITY_ATTRS.map(a => el.getAttribute(a) ?? '').join('|')}`
+}
+
+function parseRoot(markup) {
+    // The HTML parser handles inline SVG and is forgiving about attribute syntax,
+    // unlike DOMParser's XML mode.
+    const template = document.createElement('template')
+    template.innerHTML = markup.trim()
+    const svg = template.content.querySelector('svg')
+    return { svg, root: rootOf(svg) }
+}
+
+const finished = animations => Promise.all(animations.map(a => a.finished)).catch(() => {})
+
+/**
+ * Replaces the icon inside `svg` with `markup`.
+ *
+ * - `shared` (default when icons have geometry in common): parts present in both
+ *   icons stay put, outgoing details un-draw, incoming details draw/pop in, and the
+ *   shared container gets a small squash. Solar families (chat-round-*, chat-square-*,
+ *   letter-*, …) share their container paths, so this applies across most of the set.
+ * - `fade`: generic scale/rotate/blur cross-swap for unrelated icons.
+ */
+async function swap(svg, markup, { mode = 'auto', speed = 1 } = {}) {
+    const s = speed * config.speed
+    const next = parseRoot(markup)
+    const current = rootOf(svg)
+    const nextKeys = new Set([...next.root.querySelectorAll(GEOMETRY)].map(identity))
+    const currentEls = [...current.querySelectorAll(GEOMETRY)]
+    const currentKeys = new Set(currentEls.map(identity))
+    const leaving = currentEls.filter(el => !nextKeys.has(identity(el)))
+    const sharedCount = currentEls.length - leaving.length
+
+    if (mode === 'auto') mode = sharedCount > 0 ? 'shared' : 'fade'
+    stop(svg)
+
+    const commit = () => {
+        const imported = document.importNode(next.root, true)
+        current.replaceWith(imported)
+        svg.dataset.solarIcon = next.svg.dataset.solarIcon ?? ''
+        svg.setAttribute('class', next.svg.getAttribute('class') ?? '')
+        return imported
+    }
+
+    if (isReduced()) {
+        commit()
+        return
+    }
+
+    if (mode === 'shared') {
+        await finished(
+            leaving.map((el, i) =>
+                el.animate(
+                    [
+                        { strokeDasharray: '1 1', strokeDashoffset: 0, opacity: 1 },
+                        { strokeDasharray: '1 1', strokeDashoffset: -1, opacity: 0 },
+                    ],
+                    { duration: 200 / s, delay: (i * 40) / s, easing: ease.in, fill: 'forwards' }
+                )
+            )
+        )
+        const root = commit()
+        const entering = [...root.querySelectorAll(GEOMETRY)].filter(
+            el => !currentKeys.has(identity(el))
+        )
+        const shared = [...root.querySelectorAll(GEOMETRY)].filter(el =>
+            currentKeys.has(identity(el))
+        )
+        const sp = spring({ stiffness: 260, damping: 13 })
+
+        shared.forEach(el => {
+            applyOrigin(el, '12 12')
+            el.animate([{ transform: 'scale(0.9)' }, { transform: 'scale(1)' }], {
+                duration: sp.duration / s,
+                easing: sp.easing,
+            })
+        })
+        trackStrokes(svg)
+        await finished(
+            entering.flatMap((el, i) => {
+                applyOrigin(el, 'center')
+                const delay = (60 + i * 70) / s
+                return [
+                    el.animate(
+                        [
+                            { strokeDasharray: '1 1', strokeDashoffset: 1, opacity: 0 },
+                            { strokeDasharray: '1 1', strokeDashoffset: 1, opacity: 1, offset: 0.05 },
+                            { strokeDasharray: '1 1', strokeDashoffset: 0, opacity: 1 },
+                        ],
+                        { duration: 340 / s, delay, easing: ease.out, fill: 'backwards' }
+                    ),
+                    el.animate([{ transform: 'scale(0.4)' }, { transform: 'scale(1)' }], {
+                        duration: sp.duration / s,
+                        delay,
+                        easing: sp.easing,
+                        fill: 'backwards',
+                    }),
+                ]
+            })
+        )
+        return
+    }
+
+    // fade
+    applyOrigin(current, '12 12')
+    const outgoing = [
+        current.animate(
+            [
+                { transform: 'scale(1) rotate(0deg)', opacity: 1 },
+                { transform: 'scale(0.5) rotate(-45deg)', opacity: 0 },
+            ],
+            { duration: 160 / s, easing: ease.in, fill: 'forwards' }
+        ),
+        svg.animate([{ filter: 'blur(0px)' }, { filter: 'blur(2px)' }], {
+            duration: 160 / s,
+            fill: 'forwards',
+        }),
+    ]
+    trackStrokes(svg)
+    await finished(outgoing)
+    const root = commit()
+    applyOrigin(root, '12 12')
+    const sp = spring({ stiffness: 240, damping: 15 })
+    svg.getAnimations().forEach(a => a.cancel())
+    const incoming = [
+        root.animate(
+            [
+                { transform: 'scale(0.5) rotate(45deg)', opacity: 0 },
+                { transform: 'scale(1) rotate(0deg)', opacity: 1 },
+            ],
+            { duration: sp.duration / s, easing: sp.easing }
+        ),
+        svg.animate([{ filter: 'blur(2px)' }, { filter: 'blur(0px)' }], { duration: 160 / s }),
+    ]
+    trackStrokes(svg)
+    await finished(incoming)
+}
+
+// ---- presets.js
+
+// ---------------------------------------------------------------------------
+// Keyframe helpers
+// ---------------------------------------------------------------------------
+
+const dash = (offset, opacity = 1, extra = {}) => ({
+    strokeDasharray: '1 1',
+    strokeDashoffset: offset,
+    opacity,
+    ...extra,
+})
+
+/** Stroke draws in from nothing (needs `pathLength="1"`, added by the build). */
+const drawIn = [dash(1, 0), dash(1, 1, { offset: 0.04, easing: ease.out }), dash(0)]
+
+/**
+ * The move that carries the whole reel: a stroke retracts tail-first, stays hidden
+ * for a beat while the container simplifies, then draws back in.
+ */
+const retractRebuild = [
+    dash(0, 1, { easing: ease.in }),
+    dash(-1, 1, { offset: 0.3 }),
+    dash(-1, 0, { offset: 0.31 }),
+    dash(1, 0, { offset: 0.44 }),
+    dash(1, 1, { offset: 0.45, easing: ease.out }),
+    dash(0),
+]
+
+/** Shrinks away, hides, then pops back with overshoot. */
+const popBack = [
+    { transform: 'scale(1)', opacity: 1, easing: ease.in },
+    { transform: 'scale(0)', opacity: 0, offset: 0.3 },
+    { transform: 'scale(0)', opacity: 0, offset: 0.45, easing: ease.back },
+    { transform: 'scale(1.2)', opacity: 1, offset: 0.75 },
+    { transform: 'scale(1)', opacity: 1 },
+]
+
+/** Solid stroke breaks into dashes while spinning, then closes back up. */
+const dashedSpin = [
+    { strokeDasharray: '1 0', transform: 'rotate(0deg)', easing: ease.inOut },
+    { strokeDasharray: '0.045 0.035', transform: 'rotate(-200deg)', offset: 0.45 },
+    { strokeDasharray: '1 0', transform: 'rotate(-360deg)' },
+]
+
+const wobble = (deg = 16) => [
+    { transform: 'rotate(0deg)', easing: ease.out },
+    { transform: `rotate(${-deg}deg)`, offset: 0.3, easing: ease.inOut },
+    { transform: `rotate(${deg * 0.5}deg)`, offset: 0.6, easing: ease.inOut },
+    { transform: `rotate(${-deg * 0.2}deg)`, offset: 0.82, easing: ease.inOut },
+    { transform: 'rotate(0deg)' },
+]
+
+const squash = (sx = 1.1, sy = 0.86) => [
+    { transform: 'scale(1, 1)', easing: ease.out },
+    { transform: `scale(${sx}, ${sy})`, offset: 0.3, easing: ease.inOut },
+    { transform: `scale(${2 - sx}, ${2 - sy})`, offset: 0.6, easing: ease.inOut },
+    { transform: 'scale(1, 1)' },
+]
+
+/**
+ * Frames for a seamless cartoon-flame loop on one path. Points are displaced by
+ * height: the base stays planted, the tip sways, licks sideways and stretches up,
+ * and the body breathes in width. Every term is zero at t = 0, so the first and
+ * last frames are the untouched icon and the loop can start or stop without a jump.
+ */
+function flameFrames(el, { frames = 16, sway = 0.05, stretch = 0.06, breathe = 0.06, phase = 0, dir = 1 } = {}) {
+    el.__solarD ??= el.getAttribute('d')
+    const box = el.getBBox()
+    const base = box.y + box.height
+    const cx = box.x + box.width / 2
+    const h = box.height
+    const TAU = Math.PI * 2
+
+    return Array.from({ length: frames + 1 }, (_, f) => {
+        const t = (f / frames) * TAU
+        return deformPath(el.__solarD, (x, y) => {
+            const k = Math.min(1, Math.max(0, (base - y) / h)) // 0 at the base, 1 at the tip
+            const w = k * k
+            const a = phase + k * 2.2
+            const b = phase * 1.7 + k * 4 + 1
+            // Slow sway plus a quicker lick, offset so both start at zero.
+            const swing = Math.sin(t + a) - Math.sin(a) + 0.35 * (Math.sin(3 * t + b) - Math.sin(b))
+            const lift = 0.5 - 0.5 * Math.cos(2 * t)
+            const pulse = Math.sin(2 * t)
+            return [
+                x + dir * sway * h * w * swing + (x - cx) * breathe * k * pulse,
+                y - stretch * h * w * lift,
+            ]
+        })
+    })
+}
+
+const D = 900 // base duration of a signature animation (the reel runs ~0.9s per icon)
+
+// ---------------------------------------------------------------------------
+// Generic presets: work on any icon, no per-icon data required
+// ---------------------------------------------------------------------------
+
+definePresets({
+    wiggle: ({ root }) => [{ targets: root, origin: '12 12', duration: 650, keyframes: wobble(12) }],
+
+    pop: ({ root }) => {
+        const sp = spring({ stiffness: 320, damping: 11 })
+        return [
+            {
+                targets: root,
+                origin: '12 12',
+                duration: sp.duration,
+                easing: sp.easing,
+                keyframes: [{ transform: 'scale(0.7)' }, { transform: 'scale(1)' }],
+            },
+        ]
+    },
+
+    bounce: ({ root }) => [
+        {
+            targets: root,
+            origin: '12 22',
+            duration: 700,
+            keyframes: [
+                { transform: 'translateY(0) scale(1, 1)', easing: ease.out },
+                { transform: 'translateY(-4px) scale(0.94, 1.06)', offset: 0.35, easing: ease.in },
+                { transform: 'translateY(0) scale(1.08, 0.9)', offset: 0.6, easing: ease.out },
+                { transform: 'translateY(-1px) scale(1, 1)', offset: 0.8, easing: ease.in },
+                { transform: 'translateY(0) scale(1, 1)' },
+            ],
+        },
+    ],
+
+    spin: ({ root }) => [
+        {
+            targets: root,
+            origin: '12 12',
+            duration: 700,
+            easing: ease.inOut,
+            keyframes: [{ transform: 'rotate(0deg)' }, { transform: 'rotate(360deg)' }],
+        },
+    ],
+
+    shake: ({ root }) => [
+        {
+            targets: root,
+            origin: '12 12',
+            duration: 500,
+            keyframes: [0, -3, 3, -2, 2, -1, 0].map(x => ({ transform: `translateX(${x}px)` })),
+        },
+    ],
+
+    /** Appear: every stroke draws in, staggered. */
+    draw: ({ all }) => [
+        { targets: all, duration: 650, stagger: 90, easing: 'linear', origin: false, keyframes: drawIn },
+    ],
+
+    /** Generic version of the reel: container squashes, details retract and rebuild. */
+    rebuild: ctx => [
+        { targets: ctx.root, origin: '12 12', duration: D, keyframes: squash(1.06, 0.9) },
+        { targets: ctx.details, duration: D, stagger: 60, origin: false, keyframes: retractRebuild },
+    ],
+
+    /** Duotone: the secondary layer lifts off and settles back. */
+    'layer-stagger': ({ secondary, all }) => [
+        {
+            targets: secondary.length ? secondary : all.slice(1),
+            origin: 'center',
+            duration: 700,
+            stagger: 80,
+            keyframes: [
+                { transform: 'translate(0, 0)', easing: ease.out },
+                { transform: 'translate(1.5px, -1.5px)', offset: 0.4, easing: ease.inOut },
+                { transform: 'translate(0, 0)' },
+            ],
+        },
+    ],
+
+    /** Loop-friendly heartbeat for unread / live states. */
+    pulse: ({ root }) => [
+        {
+            targets: root,
+            origin: '12 12',
+            duration: 900,
+            keyframes: [
+                { transform: 'scale(1)', easing: ease.out },
+                { transform: 'scale(1.12)', offset: 0.15, easing: ease.in },
+                { transform: 'scale(1)', offset: 0.3, easing: ease.out },
+                { transform: 'scale(1.08)', offset: 0.45, easing: ease.in },
+                { transform: 'scale(1)', offset: 0.65 },
+                { transform: 'scale(1)' },
+            ],
+        },
+    ],
+
+    /**
+     * Ambient cartoon fire: every path morphs on a seamless loop. Inner flames get
+     * a different phase and opposite sway so they don't move in lockstep.
+     */
+    flicker: ({ all }) =>
+        all.map((el, i) => ({
+            targets: el,
+            origin: false,
+            duration: 1400,
+            iterations: Infinity,
+            keyframes: flameFrames(
+                el,
+                i === 0
+                    ? {}
+                    : { sway: 0.09, stretch: 0.1, breathe: 0.08, phase: 1.9 * i, dir: i % 2 ? -1 : 1 }
+            ),
+        })),
+
+    /** Typing indicator: dots hop one after another. */
+    typing: ({ parts }) => [
+        {
+            targets: parts('dot'),
+            origin: 'center',
+            duration: 520,
+            stagger: 110,
+            keyframes: [
+                { transform: 'translateY(0)', easing: ease.out },
+                { transform: 'translateY(-2.5px)', offset: 0.4, easing: ease.in },
+                { transform: 'translateY(0)' },
+            ],
+        },
+    ],
+})
+
+// ---------------------------------------------------------------------------
+// Signature animations: one per icon, reproducing the "Chat and Messaging" reel.
+// Part names come from PARTS in build.mjs.
+// ---------------------------------------------------------------------------
+
+const signatures = {
+    'chat-round-warning': ({ root, part }) => [
+        { targets: root, origin: '12 12', duration: D, keyframes: wobble(16) },
+        { targets: part('bar'), duration: D, origin: false, keyframes: retractRebuild },
+        { targets: part('dot'), origin: 'center', duration: D, delay: 60, keyframes: popBack },
+    ],
+
+    'restart-circle': ({ part }) => [
+        { targets: part('ring'), origin: 'center', duration: D, keyframes: dashedSpin },
+        {
+            targets: part('arrow'),
+            origin: 'center',
+            duration: D,
+            keyframes: [
+                { transform: 'scale(1) rotate(0deg)', opacity: 1, easing: ease.in },
+                { transform: 'scale(0) rotate(-120deg)', opacity: 0, offset: 0.35 },
+                { transform: 'scale(0) rotate(-120deg)', opacity: 0, offset: 0.45, easing: ease.back },
+                { transform: 'scale(1.15) rotate(10deg)', opacity: 1, offset: 0.78 },
+                { transform: 'scale(1) rotate(0deg)', opacity: 1 },
+            ],
+        },
+    ],
+
+    'chat-round-unread': ({ part }) => [
+        { targets: part('bubble'), origin: '12 12', duration: D, keyframes: wobble(20) },
+        { targets: part('badge'), origin: 'center', duration: D, delay: 80, keyframes: popBack },
+    ],
+
+    'chat-square-arrow': ({ parts }) => [
+        { targets: parts('bubble'), origin: '12 21', duration: D, keyframes: squash(1.08, 0.88) },
+        {
+            // The arrow flies out to the right and comes back in from the left.
+            targets: parts('arrow'),
+            origin: false,
+            duration: D,
+            keyframes: [
+                { transform: 'translateX(0)', opacity: 1, easing: ease.in },
+                { transform: 'translateX(6px)', opacity: 0, offset: 0.3 },
+                { transform: 'translateX(-5px)', opacity: 0, offset: 0.45, easing: ease.back },
+                { transform: 'translateX(0)', opacity: 1, offset: 0.8 },
+                { transform: 'translateX(0)', opacity: 1 },
+            ],
+        },
+    ],
+
+    'chat-round-like': ({ part }) => [
+        { targets: part('bubble'), origin: '12 12', duration: D, keyframes: wobble(8) },
+        {
+            targets: part('heart'),
+            origin: 'center bottom',
+            duration: D,
+            keyframes: [
+                { transform: 'scale(1)', easing: ease.in },
+                { transform: 'scale(0)', offset: 0.3 },
+                { transform: 'scale(0)', offset: 0.4, easing: ease.out },
+                { transform: 'scale(1.3)', offset: 0.62, easing: ease.inOut },
+                { transform: 'scale(0.9)', offset: 0.76, easing: ease.inOut },
+                { transform: 'scale(1.06)', offset: 0.88, easing: ease.inOut },
+                { transform: 'scale(1)' },
+            ],
+        },
+    ],
+
+    inbox: ({ root, part }) => [
+        {
+            targets: root,
+            origin: '12 12',
+            duration: D,
+            keyframes: [
+                { transform: 'rotate(0deg) scale(1, 1)', easing: ease.out },
+                { transform: 'rotate(-18deg) scale(1.05, 0.88)', offset: 0.35, easing: ease.inOut },
+                { transform: 'rotate(6deg) scale(0.97, 1.04)', offset: 0.68, easing: ease.inOut },
+                { transform: 'rotate(0deg) scale(1, 1)' },
+            ],
+        },
+        { targets: part('tray'), duration: D, origin: false, keyframes: retractRebuild },
+    ],
+
+    'user-speak-rounded': ({ part, parts }) => [
+        {
+            targets: part('head'),
+            origin: 'center',
+            duration: D,
+            keyframes: [
+                { transform: 'translateY(0)', easing: ease.out },
+                { transform: 'translateY(2px)', offset: 0.3, easing: ease.inOut },
+                { transform: 'translateY(-1.5px)', offset: 0.6, easing: ease.inOut },
+                { transform: 'translateY(0)' },
+            ],
+        },
+        { targets: part('body'), origin: 'center bottom', duration: D, keyframes: squash(1.08, 0.82) },
+        { targets: [...parts('wave')].reverse(), duration: D, stagger: 90, origin: false, keyframes: retractRebuild },
+    ],
+
+    list: ({ parts }) => [
+        {
+            // Rows scroll out to the left and slide back in from the right.
+            targets: parts('row'),
+            origin: false,
+            duration: D,
+            stagger: 70,
+            keyframes: [
+                { transform: 'translateX(0)', opacity: 1, easing: ease.in },
+                { transform: 'translateX(-8px)', opacity: 0, offset: 0.3 },
+                { transform: 'translateX(8px)', opacity: 0, offset: 0.42, easing: ease.out },
+                { transform: 'translateX(0)', opacity: 1 },
+            ],
+        },
+    ],
+
+    'user-circle': ({ part }) => [
+        { targets: part('ring'), origin: 'center', duration: D, keyframes: dashedSpin },
+        { targets: part('head'), origin: 'center', duration: D, delay: 40, keyframes: popBack },
+        { targets: part('body'), duration: D, origin: false, keyframes: retractRebuild },
+    ],
+
+    'chat-round': ({ root }) => [
+        {
+            targets: root,
+            origin: '12 12',
+            duration: D,
+            keyframes: [
+                { transform: 'scale(1) rotate(0deg)', easing: ease.in },
+                { transform: 'scale(0.6) rotate(-14deg)', offset: 0.35, easing: ease.out },
+                { transform: 'scale(1.12) rotate(4deg)', offset: 0.65, easing: ease.inOut },
+                { transform: 'scale(0.96) rotate(0deg)', offset: 0.82, easing: ease.inOut },
+                { transform: 'scale(1) rotate(0deg)' },
+            ],
+        },
+    ],
+
+    'star-circle': ({ part }) => [
+        {
+            // 216deg = 3 x 72deg, so the star lands on an identical pose.
+            targets: part('star'),
+            origin: 'center',
+            duration: D,
+            keyframes: [
+                { transform: 'rotate(0deg) scale(1)', easing: ease.in },
+                { transform: 'rotate(90deg) scale(0.5)', offset: 0.35, easing: ease.out },
+                { transform: 'rotate(200deg) scale(1.2)', offset: 0.72, easing: ease.inOut },
+                { transform: 'rotate(216deg) scale(1)' },
+            ],
+        },
+        { targets: part('ring'), origin: 'center', duration: D, keyframes: squash(1.05, 0.95) },
+    ],
+
+    'pen-new-round': ({ part }) => [
+        {
+            // The pen lifts out of the bubble while the bubble redraws underneath it.
+            targets: part('pen'),
+            origin: 'center',
+            duration: D,
+            keyframes: [
+                { transform: 'translate(0, 0) rotate(0deg)', easing: ease.out },
+                { transform: 'translate(2px, -2.5px) rotate(14deg)', offset: 0.35, easing: ease.inOut },
+                { transform: 'translate(-0.5px, 0.5px) rotate(-6deg)', offset: 0.7, easing: ease.inOut },
+                { transform: 'translate(0, 0) rotate(0deg)' },
+            ],
+        },
+        { targets: part('arc'), duration: D, origin: false, keyframes: retractRebuild },
+    ],
+
+    'pen-2': ({ part }) => [
+        { targets: part('pen'), origin: 'left bottom', duration: D, keyframes: wobble(14) },
+        { targets: part('base'), duration: D, delay: 80, origin: false, keyframes: retractRebuild },
+    ],
+
+    'chat-round-quote': ({ part, parts }) => [
+        { targets: part('bubble'), origin: '12 12', duration: D, keyframes: wobble(8) },
+        { targets: parts('quote'), origin: 'center', duration: D, stagger: 90, keyframes: popBack },
+    ],
+
+    'chat-round-question-mark': ({ part }) => [
+        {
+            targets: part('hook'),
+            origin: 'center top',
+            duration: D,
+            keyframes: [
+                { transform: 'rotate(0deg)', easing: ease.out },
+                { transform: 'rotate(28deg)', offset: 0.28, easing: ease.inOut },
+                { transform: 'rotate(-18deg)', offset: 0.55, easing: ease.inOut },
+                { transform: 'rotate(7deg)', offset: 0.78, easing: ease.inOut },
+                { transform: 'rotate(0deg)' },
+            ],
+        },
+        {
+            targets: part('dot'),
+            origin: 'center',
+            duration: D * 0.6,
+            delay: 160,
+            keyframes: [
+                { transform: 'translateY(0)', easing: ease.out },
+                { transform: 'translateY(-3px)', offset: 0.4, easing: ease.in },
+                { transform: 'translateY(0)' },
+            ],
+        },
+        { targets: part('bubble'), origin: '12 21', duration: D, keyframes: squash(1.05, 0.93) },
+    ],
+
+    'chat-round-money': ({ part }) => [
+        {
+            // Coin flip: scaleX through zero to -1 and back.
+            targets: part('sign'),
+            origin: 'center',
+            duration: D,
+            keyframes: [
+                { transform: 'scaleX(1)', easing: ease.in },
+                { transform: 'scaleX(-1)', offset: 0.45, easing: ease.out },
+                { transform: 'scaleX(1)' },
+            ],
+        },
+        { targets: part('bubble'), origin: '12 12', duration: D, keyframes: wobble(10) },
+    ],
+
+    translation: ({ part }) => [
+        {
+            // A ripple from the core outwards.
+            targets: [part('core'), part('inner'), part('outer')],
+            origin: '12 12',
+            duration: D * 0.8,
+            stagger: 110,
+            keyframes: [
+                { transform: 'scale(1)', opacity: 1, easing: ease.in },
+                { transform: 'scale(0.55)', opacity: 0.2, offset: 0.35, easing: ease.out },
+                { transform: 'scale(1.12)', opacity: 1, offset: 0.7, easing: ease.inOut },
+                { transform: 'scale(1)', opacity: 1 },
+            ],
+        },
+    ],
+
+    'link-circle': ({ part }) => [
+        {
+            // The two halves are point-symmetric, so a 180deg turn lands seamlessly.
+            targets: [part('left'), part('right')],
+            origin: '12 12',
+            duration: D,
+            keyframes: (_el, i) => {
+                const apart = i === 0 ? -2.5 : 2.5
+                return [
+                    { transform: 'rotate(0deg) translateX(0)', easing: ease.in },
+                    { transform: `rotate(70deg) translateX(${apart}px)`, offset: 0.4, easing: ease.out },
+                    { transform: 'rotate(170deg) translateX(0)', offset: 0.8, easing: ease.inOut },
+                    { transform: 'rotate(180deg) translateX(0)' },
+                ]
+            },
+        },
+    ],
+
+    'letter-unread': ({ part }) => [
+        {
+            // The flap folds up around its top edge.
+            targets: part('flap'),
+            origin: 'center top',
+            duration: D,
+            keyframes: [
+                { transform: 'scaleY(1)', easing: ease.inOut },
+                { transform: 'scaleY(-1)', offset: 0.4 },
+                { transform: 'scaleY(-1)', offset: 0.5, easing: ease.inOut },
+                { transform: 'scaleY(1)' },
+            ],
+        },
+        { targets: part('envelope'), origin: '12 20', duration: D, keyframes: squash(1.05, 0.92) },
+        { targets: part('badge'), origin: 'center', duration: D, delay: 120, keyframes: popBack },
+    ],
+
+    'chat-round-code': ({ part }) => [
+        {
+            targets: [part('left'), part('right')],
+            origin: 'center',
+            duration: D,
+            keyframes: (_el, i) => {
+                const x = i === 0 ? -2.5 : 2.5
+                return [
+                    { transform: 'translateX(0)', easing: ease.out },
+                    { transform: `translateX(${x}px)`, offset: 0.35, easing: ease.inOut },
+                    { transform: `translateX(${-x * 0.3}px)`, offset: 0.7, easing: ease.inOut },
+                    { transform: 'translateX(0)' },
+                ]
+            },
+        },
+        {
+            targets: part('slash'),
+            origin: 'center',
+            duration: D,
+            easing: ease.inOut,
+            keyframes: [{ transform: 'rotate(0deg)' }, { transform: 'rotate(180deg)' }],
+        },
+    ],
+
+    'chat-round-dots': ({ parts, part }) => [
+        { targets: part('bubble'), origin: '12 21', duration: D, keyframes: squash(1.06, 0.92) },
+        {
+            targets: parts('dot'),
+            origin: 'center',
+            duration: D * 0.45,
+            stagger: 90,
+            iterations: 2,
+            keyframes: [
+                { transform: 'translateY(0)', easing: ease.out },
+                { transform: 'translateY(-3px)', offset: 0.4, easing: ease.in },
+                { transform: 'translateY(0)' },
+            ],
+        },
+    ],
+
+    'chat-round-line': ({ part, parts }) => [
+        { targets: part('bubble'), origin: '12 12', duration: D, keyframes: wobble(10) },
+        { targets: parts('line'), duration: D, stagger: 80, origin: false, keyframes: retractRebuild },
+    ],
+
+    fire: ({ part }) => [
+        {
+            targets: part('outer'),
+            origin: 'center bottom',
+            duration: D,
+            keyframes: [
+                { transform: 'skewX(0deg) scaleY(1)', easing: ease.inOut },
+                { transform: 'skewX(-8deg) scaleY(0.9)', offset: 0.25, easing: ease.inOut },
+                { transform: 'skewX(6deg) scaleY(1.06)', offset: 0.5, easing: ease.inOut },
+                { transform: 'skewX(-2deg) scaleY(0.98)', offset: 0.75, easing: ease.inOut },
+                { transform: 'skewX(0deg) scaleY(1)' },
+            ],
+        },
+        {
+            targets: part('inner'),
+            origin: 'center bottom',
+            duration: D,
+            keyframes: [
+                { transform: 'scale(1)', easing: ease.in },
+                { transform: 'scale(0.2)', offset: 0.3, easing: ease.out },
+                { transform: 'scale(1.25)', offset: 0.65, easing: ease.inOut },
+                { transform: 'scale(1)' },
+            ],
+        },
+    ],
+
+    'mention-circle': ({ part }) => [
+        { targets: part('ring'), origin: 'center', duration: D, keyframes: dashedSpin },
+        { targets: part('at'), duration: D, origin: false, keyframes: retractRebuild },
+    ],
+}
+
+definePresets(
+    Object.fromEntries(Object.entries(signatures).map(([name, fn]) => [`signature:${name}`, fn]))
+)
+
+/** Order of the 4x6 grid in the reel. */
+const REEL = Object.keys(signatures)
+
+// ---- demo.js
+
+
+
+const $ = id => document.getElementById(id)
+
+function icon(name, data = {}) {
+    const template = document.createElement('template')
+    template.innerHTML = icons[name].trim()
+    const svg = template.content.firstElementChild
+    for (const [key, value] of Object.entries(data)) svg.dataset[key] = value
+    return svg
+}
+
+// ---- Reel ------------------------------------------------------------------
+
+// Icons that stay alive between interactions.
+const AMBIENT = { fire: 'flicker' }
+
+const reel = $('reel')
+const reelIcons = REEL.map(name => {
+    const cell = document.createElement('div')
+    cell.className = 'cell'
+    const svg = icon(name)
+    const caption = document.createElement('span')
+    caption.textContent = name
+    cell.append(svg, caption)
+    reel.append(cell)
+    bind(svg, { hover: 'signature', click: 'signature', ambient: AMBIENT[name] })
+    return svg
+})
+
+const playAll = (stagger = 0) =>
+    Promise.all(
+        reelIcons.map(
+            (svg, i) =>
+                new Promise(resolve => setTimeout(() => play(svg, 'signature').then(resolve), i * stagger))
+        )
+    )
+
+let looping = false
+async function runReel(stagger) {
+    await playAll(stagger)
+    if (looping) setTimeout(() => runReel(stagger), 500)
+}
+
+$('play-all').onclick = () => runReel(0)
+$('cascade').onclick = () => runReel(45)
+$('loop').onchange = e => {
+    looping = e.target.checked
+    if (looping) runReel(0)
+}
+$('speed').oninput = e => {
+    config.speed = +e.target.value
+    $('speed-out').textContent = `${config.speed}×`
+}
+
+// Scrubbing: WAAPI animations are just timelines, so we can pause and seek them.
+const scrub = $('scrub')
+const phaseEls = [...$('phases').children]
+const PHASE_ENDS = [0.1, 0.27, 0.5, 1]
+
+// Ambient loops (fire flicker) keep running while scrubbing; only finite ones seek.
+const scrubbable = () =>
+    reel.getAnimations({ subtree: true }).filter(a => Number.isFinite(a.effect.getComputedTiming().endTime))
+
+scrub.addEventListener('pointerdown', () => {
+    looping = false
+    $('loop').checked = false
+    reelIcons.forEach(svg => play(svg, 'signature', { force: true }))
+    scrubbable().forEach(a => a.pause())
+})
+scrub.addEventListener('input', () => {
+    const progress = scrub.value / 1000
+    for (const animation of scrubbable()) {
+        const timing = animation.effect.getComputedTiming()
+        animation.currentTime = progress * (timing.endTime ?? 0)
+    }
+    const phase = PHASE_ENDS.findIndex(end => progress <= end)
+    phaseEls.forEach((el, i) => el.classList.toggle('on', i === phase))
+})
+scrub.addEventListener('change', () => {
+    scrubbable().forEach(a => a.play())
+})
+
+// Play once on load, like the reel.
+setTimeout(() => playAll(0), 300)
+
+// ---- Triggers --------------------------------------------------------------
+
+for (const preset of ['wiggle', 'pop', 'bounce', 'spin', 'shake', 'rebuild']) {
+    const wrap = document.createElement('div')
+    wrap.className = 'tagged'
+    const svg = icon(preset === 'rebuild' ? 'chat-round-code' : 'chat-round-dots', { solarHover: preset })
+    const label = document.createElement('small')
+    label.textContent = preset
+    wrap.append(svg, label)
+    $('generic').append(wrap)
+}
+
+for (const [name, text, preset] of [
+    ['chat-square-arrow', 'Send', 'signature'],
+    ['pen-new-round', 'Compose', 'signature'],
+    ['chat-round-like', 'Like', 'signature'],
+]) {
+    const button = document.createElement('button')
+    button.dataset.solarGroup = ''
+    button.append(icon(name, { solarHover: preset }), text)
+    $('group').append(button)
+}
+
+for (const name of ['letter-unread', 'chat-round-money', 'link-circle', 'translation']) {
+    $('click').append(icon(name, { solarClick: 'signature' }))
+}
+
+const appearIcons = ['chat-round-question-mark', 'inbox', 'user-speak-rounded', 'mention-circle', 'pen-2'].map(
+    name => icon(name, { solarInView: 'draw' })
+)
+$('appear').append(...appearIcons)
+$('replay-appear').onclick = () => appearIcons.forEach(svg => play(svg, 'draw'))
+
+const typing = icon('chat-round-dots', { solarLoop: 'typing' })
+const unread = icon('chat-round-unread', { solarLoop: 'pulse' })
+const sync = icon('restart-circle', { solarLoop: 'spin' })
+const fire = icon('fire', { solarAmbient: 'flicker', solarHover: 'signature' })
+$('loops').append(typing, unread, sync, fire)
+
+for (const name of ['chat-round-line@LineDuotone', 'letter-unread@LineDuotone', 'inbox@LineDuotone', 'chat-round-dots@LineDuotone']) {
+    $('duotone').append(icon(name, { solarHover: 'layer-stagger', solarClick: 'layer-stagger' }))
+}
+
+autoBind(document)
+
+// ---- Transitions -----------------------------------------------------------
+
+function cycler(hostId, labelId, buttonId, names, mode) {
+    let index = 0
+    const svg = icon(names[0])
+    $(hostId).append(svg)
+    $(labelId).textContent = names[0]
+    let busy = false
+    $(buttonId).onclick = async () => {
+        if (busy) return
+        busy = true
+        index = (index + 1) % names.length
+        $(labelId).textContent = names[index]
+        await swap(svg, icons[names[index]], { mode })
+        busy = false
+    }
+}
+
+cycler('swap-shared', 'swap-shared-label', 'swap-shared-next', [
+    'chat-round-dots',
+    'chat-round-check',
+    'chat-round-like',
+    'chat-round-line',
+    'chat-round-code',
+    'chat-round-question-mark',
+    'chat-round-close',
+    'chat-round-add',
+])
+
+cycler('swap-fade', 'swap-fade-label', 'swap-fade-next', [
+    'letter',
+    'inbox',
+    'chat-round',
+    'translation',
+    'user-circle',
+])
+
+{
+    const svg = icon('chat-round-dots')
+    const button = $('toggle')
+    button.append(svg)
+    let read = false
+    let busy = false
+    button.onclick = async () => {
+        if (busy) return
+        busy = true
+        read = !read
+        $('toggle-label').textContent = read ? 'read' : 'unread'
+        await swap(svg, icons[read ? 'chat-round-check' : 'chat-round-dots'])
+        busy = false
+    }
+}
+
+</script>
+</body>
+</html>

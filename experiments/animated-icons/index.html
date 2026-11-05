@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Solar Icons: animated prototype</title>
+<style>
+    :root {
+        --ink: #1c274c;
+        --muted: #7a8299;
+        --line: #e7e9f0;
+        --accent: #2f80ed;
+        --bg: #fbfbfd;
+        color-scheme: light;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        font: 14px/1.5 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+    }
+    main { max-width: 980px; margin: 0 auto; padding: 48px 24px 96px; }
+    h1 {
+        display: flex; align-items: center; justify-content: center; gap: 10px;
+        margin: 0; font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .pill {
+        background: var(--accent); color: #fff; border-radius: 999px;
+        padding: 3px 12px; font-size: 12px; letter-spacing: 0.04em;
+    }
+    .sub { text-align: center; color: var(--muted); margin: 8px 0 0; }
+    h2 { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; margin: 64px 0 4px; }
+    h2 + p { color: var(--muted); margin: 0 0 20px; }
+    code { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; background: #eef0f6; padding: 1px 5px; border-radius: 4px; }
+
+    svg.solar { width: 1em; height: 1em; overflow: visible; stroke-width: 1.5; display: block; }
+
+    .reel {
+        display: grid; grid-template-columns: repeat(6, 1fr); gap: 28px 0;
+        margin: 36px auto 0; max-width: 640px; font-size: 44px;
+    }
+    .reel .cell { display: grid; place-items: center; gap: 6px; cursor: pointer; }
+    .reel .cell span { font-size: 10px; color: var(--muted); opacity: 0; transition: opacity .15s; white-space: nowrap; }
+    .reel .cell:hover span { opacity: 1; }
+
+    .toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; margin-top: 32px; }
+    button {
+        font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line);
+        border-radius: 10px; padding: 7px 14px; cursor: pointer;
+        display: inline-flex; align-items: center; gap: 8px;
+    }
+    button:hover { border-color: #cfd4e2; }
+    button.primary { background: var(--ink); color: #fff; border-color: var(--ink); }
+    label.inline { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); }
+
+    .scrub { max-width: 640px; margin: 28px auto 0; }
+    .scrub input { width: 100%; accent-color: var(--accent); }
+    .phases { display: grid; grid-template-columns: 10fr 17fr 23fr 50fr; gap: 4px; margin-top: 6px; }
+    .phases div { border-top: 3px solid var(--line); padding-top: 6px; font-size: 11px; color: var(--muted); }
+    .phases div.on { border-color: var(--accent); color: var(--ink); }
+    .phases b { display: block; font-size: 12px; }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+    .card h3 { margin: 0 0 2px; font-size: 14px; }
+    .card p { margin: 0 0 16px; color: var(--muted); font-size: 12.5px; }
+    .row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; font-size: 28px; }
+    .tagged { display: grid; justify-items: center; gap: 4px; }
+    .tagged small { font-size: 10.5px; color: var(--muted); }
+
+    .swap-stage { display: flex; align-items: center; gap: 18px; font-size: 56px; }
+    .swap-stage .label { font: 12px ui-monospace, Menlo, monospace; color: var(--muted); min-width: 170px; }
+
+    .badge-btn { position: relative; }
+    .note { margin-top: 64px; color: var(--muted); font-size: 12.5px; text-align: center; }
+</style>
+</head>
+<body>
+<main>
+    <h1>Chat and Messaging <span class="pill">Animated</span></h1>
+    <p class="sub">Solar Linear icons · WAAPI + CSS, zero dependencies · hover or click any icon</p>
+
+    <div class="reel" id="reel"></div>
+
+    <div class="toolbar">
+        <button class="primary" id="play-all">Play reel</button>
+        <button id="cascade">Cascade</button>
+        <label class="inline"><input type="checkbox" id="loop" /> Loop</label>
+        <label class="inline">Speed <input type="range" id="speed" min="0.25" max="2" step="0.05" value="1" /> <span id="speed-out">1×</span></label>
+    </div>
+
+    <div class="scrub">
+        <input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Scrub the reel" />
+        <div class="phases" id="phases">
+            <div><b>Anticipate</b>details retract</div>
+            <div><b>Simplify</b>base silhouette</div>
+            <div><b>Rebuild</b>draw &amp; pop back</div>
+            <div><b>Settle</b>overshoot → rest</div>
+        </div>
+    </div>
+
+    <h2>Triggers</h2>
+    <p>The same runtime, wired with <code>bind()</code> or plain <code>data-solar-*</code> attributes and <code>autoBind()</code>.</p>
+    <div class="cards">
+        <div class="card">
+            <h3>Hover: generic presets</h3>
+            <p>Work on any of the 8,700+ icons, no per-icon data.</p>
+            <div class="row" id="generic"></div>
+        </div>
+        <div class="card">
+            <h3>Group hover</h3>
+            <p>Hovering the button animates its icon (<code>data-solar-group</code>).</p>
+            <div class="row" style="font-size:18px" id="group"></div>
+        </div>
+        <div class="card">
+            <h3>Click</h3>
+            <p>Longer signature animations, interruptible on rapid clicks.</p>
+            <div class="row" id="click"></div>
+        </div>
+        <div class="card">
+            <h3>Appear</h3>
+            <p>Strokes draw in when scrolled into view (<code>inView</code>).</p>
+            <div class="row" id="appear"></div>
+            <div style="margin-top:14px"><button id="replay-appear">Replay</button></div>
+        </div>
+        <div class="card">
+            <h3>Loop</h3>
+            <p>Status states: typing, unread pulse, sync, and an ambient path-morph <code>flicker</code> (hover still plays on top).</p>
+            <div class="row" id="loops"></div>
+        </div>
+        <div class="card">
+            <h3>Duotone layers</h3>
+            <p><code>layer-stagger</code> keys off the secondary <code>opacity</code> layer.</p>
+            <div class="row" id="duotone"></div>
+        </div>
+    </div>
+
+    <h2>Transitions</h2>
+    <p><code>swap()</code> keeps geometry the two icons share and only rebuilds the details; unrelated icons cross-swap.</p>
+    <div class="cards">
+        <div class="card">
+            <h3>Shared container</h3>
+            <p>chat-round-* family: the bubble never leaves.</p>
+            <div class="swap-stage"><span id="swap-shared"></span><span class="label" id="swap-shared-label"></span></div>
+            <div style="margin-top:14px"><button id="swap-shared-next">Next icon</button></div>
+        </div>
+        <div class="card">
+            <h3>Cross-swap</h3>
+            <p>No shared geometry: rotate/scale/blur swap.</p>
+            <div class="swap-stage"><span id="swap-fade"></span><span class="label" id="swap-fade-label"></span></div>
+            <div style="margin-top:14px"><button id="swap-fade-next">Next icon</button></div>
+        </div>
+        <div class="card">
+            <h3>Toggle</h3>
+            <p>A real control: mark as read.</p>
+            <div class="swap-stage"><button id="toggle" style="font-size:22px;padding:10px 14px"></button><span class="label" id="toggle-label">unread</span></div>
+        </div>
+    </div>
+
+    <p class="note">Respects <code>prefers-reduced-motion</code>. Prototype: experiments/animated-icons.</p>
+</main>
+<script type="module" src="./demo.js"></script>
+</body>
+</html>
